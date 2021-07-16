@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152988792371",
+    "project_id": "sunlin-hackathon",
+    "storage_bucket": "sunlin-hackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152988792371:android:38691be56c27302e12d546",
+        "android_client_info": {
+          "package_name": "com.example.a2021sunlinhackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152988792371-pe5b31lj7fjjms983if8laj1rii53hu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhZyQAR1ysSghhKcJM_1fCpuWlECX1Qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152988792371-pe5b31lj7fjjms983if8laj1rii53hu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
