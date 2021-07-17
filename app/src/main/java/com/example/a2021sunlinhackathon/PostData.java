@@ -8,6 +8,24 @@ public class PostData {
     public String uid; // 사용자 고유값
     public String addars; // 없음?
     public String postid;
+    public boolean isHeartPushed;
+
+    public PostData(String name, String post, String uid, String addars, String postid, boolean isHeartPushed) {
+        this.name = name;
+        this.post = post;
+        this.uid = uid;
+        this.addars = addars;
+        this.postid = postid;
+        this.isHeartPushed = isHeartPushed;
+    }
+
+    public boolean isHeartPushed() {
+        return isHeartPushed;
+    }
+
+    public void setHeartPushed(boolean heartPushed) {
+        isHeartPushed = heartPushed;
+    }
 
     public String getPostid() {
         return postid;

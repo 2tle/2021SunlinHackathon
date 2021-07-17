@@ -40,6 +40,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -78,9 +80,17 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 arrayList.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                for(DataSnapshot s : snapshot.getChildren()) {
+                    try {
+                        boolean isHeart = false;
+                        PostData postData = new PostData(s.child("name").getValue().toString(),s.child("post").getValue().toString(),s.child("uid").getValue().toString(), s.child("addars").getValue().toString(), s.child("postid").getValue().toString(), isHeart);
+                        arrayList.add(postData);
+                    } catch (Exception e) {
+                        Log.e(">",e.getMessage());
+                    }
+                    /*
                     PostData postData = snapshot1.getValue(PostData.class);
-                    arrayList.add(postData);
+                    arrayList.add(postData); */
                 }
                 adapter.notifyDataSetChanged();
             }
