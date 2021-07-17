@@ -60,7 +60,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
-// Set the layout manager to your recyclerview
         recyclerView.setLayoutManager(mLayoutManager);
 
 

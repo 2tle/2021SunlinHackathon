@@ -3,10 +3,12 @@ package com.example.a2021sunlinhackathon.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.Fragment.Fragment1;
 import com.example.a2021sunlinhackathon.Fragment.Fragment2;
 import com.example.a2021sunlinhackathon.Fragment.Fragment3;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private BottomNavigationView mBottomNV;
     ActivityMainBinding binding;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    Database database=new Database();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
         setContentView(view);
+        SharedPreferences sf = getSharedPreferences("User", MODE_PRIVATE);
+        int a = sf.getInt("plnat",0);
+        database.ppp(MainActivity.this,a);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override

@@ -13,5 +13,4 @@ public class Writemodel {
     public ArrayList<String> heart;
 
 
-
 }

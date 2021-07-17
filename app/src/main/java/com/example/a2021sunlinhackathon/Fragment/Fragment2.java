@@ -80,7 +80,11 @@ public class Fragment2 extends Fragment {
         SharedPreferences sf = getContext().getSharedPreferences("Water", getContext().MODE_PRIVATE);
         int plant = sf.getInt("plant", 0);
         int water = sf.getInt("water", 0);
+        SharedPreferences s = getContext().getSharedPreferences("User", getContext().MODE_PRIVATE);
+        int adsf = sf.getInt("plant", 0);
 
+        String a=database.flow(plant);
+        binding.ftlite.setText(a);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +97,7 @@ public class Fragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 database.waterplat(getContext(), water,plant);
+                database.lvup(water,adsf,binding.plant);
 
             }
         });
