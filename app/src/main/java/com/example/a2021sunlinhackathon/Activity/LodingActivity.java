@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.NetworkStatus;
 import com.example.a2021sunlinhackathon.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LodingActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
+    Database database=new Database();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,9 @@ public class LodingActivity extends AppCompatActivity {
         String email = sf.getString("email", "");
         String pwe = sf.getString("pwe", "");
         String id = sf.getString("id", "");
-        SharedPreferences sellp = getSharedPreferences("time", MODE_PRIVATE);
-        int ss = sellp.getInt("time", 0);
+        SharedPreferences day = getSharedPreferences("Day", MODE_PRIVATE);
+        int a=day.getInt("day",0);
+        database.day(this,a);
 
 
         if (email != "" && pwe != "") {
