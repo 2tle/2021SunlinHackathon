@@ -38,11 +38,35 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.tv_userText.setText(arrayList.get(position).getText());
         holder.tv_location.setText(arrayList.get(position).getLocation());
 
+        holder.ib_heartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        holder.ib_commentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        holder.btn_sendComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
 
     }
 
-
+    @Override
+    public int getItemCount() {
+        return (arrayList != null ? arrayList.size() : 0);
+    }
 
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
@@ -63,6 +87,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public TextView tv_bestCommentUsername;
         public TextView tv_bestCommentText;
         public Button btn_sendComment;
+
 
 
         public PostViewHolder(@NonNull View itemView) {
