@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/WaterButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="식물도감을 완성할 때 마다 물이 주\n어집니다.Shop의 상품 구매를 통\n해 주어진 물을 사용하세요."
+        android:text="글 혹은 댓글을 작성해 \n물을 얻으세요.물을 \n얻어 식물을 키워보세요."
         android:background="@drawable/group_178"
         android:padding="5dp"
         android:layout_margin="5dp"
