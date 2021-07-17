@@ -1,6 +1,8 @@
 package com.example.a2021sunlinhackathon;
 
 import android.content.Context;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -27,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
+    //public
     private ArrayList<PostData> arrayList;
     private Context context;
     public PostAdapter(ArrayList<PostData> arrayList, Context context) {
@@ -49,13 +53,35 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         /*
         Glide.with(holder.itemView).load(arrayList.get(position).getProfileImageUrl()).into(holder.iv_profile);
         Glide.with(holder.itemView).load(arrayList.get(position).getUserUploadImageUrl()).into(holder.iv_userUpload); */
-
+        String useruid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
         storageReference.child("userImages/"+arrayList.get(position).getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(context).load(uri).into(holder.iv_profile);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+
+            }
+        });
+        storageReference.child("postImages/"+arrayList.get(position).getPostid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(context).load(uri).into(holder.iv_userUpload);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+
+            }
+        });
+        storageReference.child("userImages/"+useruid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(context).load(uri).into(holder.iv_userProfile);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -140,6 +166,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_bestCommentText = itemView.findViewById(R.id.bestComment);
             btn_sendComment = itemView.findViewById(R.id.sendCommentButton);
             et_comment = itemView.findViewById(R.id.userCommentInput);
+
+            iv_profile.setBackground(new ShapeDrawable(new OvalShape()));
+            iv_profile.setClipToOutline(true);
+
+            iv_userProfile.setBackground(new ShapeDrawable(new OvalShape()));
+            iv_userProfile.setClipToOutline(true);
 
         }
     }
