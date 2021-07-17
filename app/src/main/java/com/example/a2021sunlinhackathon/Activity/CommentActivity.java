@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -33,7 +34,7 @@ public class CommentActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-
+    private String postId;
     String tltile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class CommentActivity extends AppCompatActivity {
         ActivityCommentBinding binding = ActivityCommentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        postId = getIntent().getStringExtra("id");
+        Log.d(">>>",postId);
         String useruid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         StorageReference stRef = FirebaseStorage.getInstance().getReference();
         stRef.child("userImages/"+useruid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
