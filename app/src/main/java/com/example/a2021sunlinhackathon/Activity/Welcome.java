@@ -21,8 +21,6 @@ public class Welcome extends AppCompatActivity {
         setContentView(view);
         SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
         String name = sharedPreferences.getString("name","");
-        String profile = sharedPreferences.getString("profile","");
-        String id = sharedPreferences.getString("id","");
 
         binding.text1.setText("안녕하세요\n"+name+"회원님");
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.a2021sunlinhackathon.Fragment.WelcomeFragment.WelcomeFragment1;
 import com.example.a2021sunlinhackathon.Fragment.WelcomeFragment.WelcomeFragment2;
+import com.example.a2021sunlinhackathon.Fragment.WelcomeFragment.WelcomeFragment3;
 import com.example.a2021sunlinhackathon.R;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -50,7 +51,7 @@ public class WelcomeActivity2 extends AppCompatActivity {
                 case 1:
                     return WelcomeFragment2.newInstance();
                 case 2:
-                    return WelcomeFragment2.newInstance();
+                    return WelcomeFragment3.newInstance();
                 default:
                     return null;
             }

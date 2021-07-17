@@ -5,7 +5,7 @@
     <item
         android:id="@+id/item_fragment1"
         android:enabled="true"
-        android:title="Home"
+        android:title="Post"
         app:cnb_iconColor="#71C34A"
         android:icon="@drawable/post">
 
@@ -13,7 +13,7 @@
     <item
         android:id="@+id/item_fragment2"
         android:enabled="true"
-        android:title="plant"
+        android:title="Plant"
         android:icon="@drawable/plant"
         app:cnb_iconColor="#71C34A"
         >
@@ -22,7 +22,7 @@
     <item
         android:id="@+id/item_fragment3"
         android:enabled="true"
-        android:title="shop"
+        android:title="Shop"
         android:icon="@drawable/shop"
         app:cnb_iconColor="#71C34A">
 
@@ -30,7 +30,7 @@
     <item
         android:id="@+id/item_fragment4"
         android:enabled="true"
-        android:title="friend"
+        android:title="Friend"
         android:icon="@drawable/user"
         app:cnb_iconColor="#71C34A">
 
