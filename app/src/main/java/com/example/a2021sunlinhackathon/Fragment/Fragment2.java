@@ -79,7 +79,7 @@ public class Fragment2 extends Fragment {
         binding.plant.setClipToOutline(true);
         SharedPreferences sf = getContext().getSharedPreferences("Water", getContext().MODE_PRIVATE);
         int plant = sf.getInt("plant", 0);
-        int water = sf.getInt("water", 5);
+        int water = sf.getInt("water", 0);
 
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
