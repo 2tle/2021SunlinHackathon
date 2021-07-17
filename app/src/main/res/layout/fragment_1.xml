@@ -20,13 +20,15 @@
 
         <ImageButton
             android:id="@+id/addpost"
-            android:src="@drawable/write"
+            android:src="@drawable/ic_pen"
+            android:scaleType="centerCrop"
             android:background="#00ff0000"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintRight_toRightOf="parent">
 
         </ImageButton>
 

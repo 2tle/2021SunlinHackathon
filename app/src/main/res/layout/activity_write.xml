@@ -28,10 +28,13 @@
 
     <ImageButton
         android:id="@+id/sendPostButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_gravity="right"
-        android:src="@drawable/send"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_send"
         android:background="#00ff0000"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>

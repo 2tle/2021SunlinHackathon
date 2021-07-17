@@ -71,10 +71,12 @@
 
             <ImageButton
                 android:id="@+id/commentButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/comment"
-                android:background="#00ff0000"/>
+                android:src="@drawable/chat"
+                android:scaleType="centerCrop"
+                android:background="#00ff0000"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"/>
 
 
         </LinearLayout>
