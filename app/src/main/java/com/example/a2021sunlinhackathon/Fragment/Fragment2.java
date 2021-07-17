@@ -164,7 +164,7 @@ public class Fragment2 extends Fragment {
             public void onClick(View v) {
 
                 data.waterplat(getContext(), water,plant);
-                data.lvup(water,plant,binding.plant);
+                data.lvup(plant,kind,binding.plant);
 
             }
         });
