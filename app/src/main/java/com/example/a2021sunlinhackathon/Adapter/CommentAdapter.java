@@ -1,6 +1,8 @@
 package com.example.a2021sunlinhackathon.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,7 +75,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             iv_profile = itemView.findViewById(R.id.commentProfile);
             tv_username = itemView.findViewById(R.id.commentUsername);
             tv_comment = itemView.findViewById(R.id.commentComment);
-            
+            iv_profile.setBackground(new ShapeDrawable(new OvalShape()));
+            iv_profile.setClipToOutline(true);
+
         }
     }
 }

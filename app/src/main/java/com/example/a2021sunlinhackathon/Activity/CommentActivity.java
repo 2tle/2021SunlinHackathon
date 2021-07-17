@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,6 +71,8 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
+        binding.writerProfile.setBackground(new ShapeDrawable(new OvalShape()));
+        binding.writerProfile.setClipToOutline(true);
         recyclerView = (RecyclerView)binding.commentRecycler;
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
