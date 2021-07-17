@@ -101,11 +101,17 @@
             android:layout_marginRight="8dp"/>
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:id="@+id/userCommentInput"
             android:hint="댓글달기"
             android:textSize="13sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작성"
+            android:id="@+id/sendCommentButton"
+            android:layout_gravity="right"
 
     </LinearLayout>
 
