@@ -34,37 +34,5 @@ public class UserFrofile extends AppCompatActivity {
         binding = ActivityUserFrofileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        binding.profile.setBackground(new ShapeDrawable(new OvalShape()));
-        binding.profile.setClipToOutline(true);
-        SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
-        String name = sharedPreferences.getString("name","");
-        String profile = sharedPreferences.getString("profile","");
-        String id = sharedPreferences.getString("id","");
-
-        binding.name.setText(name);
-        binding.id.setText(id);
-        Log.d("adsf",profile);
-
-        downlodimg();
-
-
     }
-    public  void downlodimg(){
-        String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseStorage storage =FirebaseStorage.getInstance();
-        StorageReference storageReference=storage.getReference();
-        storageReference.child("userImages/"+uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                url=uri;
-                Glide.with(UserFrofile.this).load(url).into(binding.profile);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-
-            }
-        });
-    }
-
 }

@@ -1,14 +1,29 @@
 package com.example.a2021sunlinhackathon.Fragment;
 
+import android.content.SharedPreferences;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.a2021sunlinhackathon.R;
+import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +36,8 @@ public class Fragment4 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private Fragment4Binding binding;
+    Uri url;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,7 +77,42 @@ public class Fragment4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup fragment4 = (ViewGroup)inflater.inflate(R.layout.fragment_4,container,false);
-        return fragment4;
+
+        Fragment4Binding binding = Fragment4Binding.inflate(inflater, container, false);
+        //set variables in Binding
+        binding.profile.setBackground(new ShapeDrawable(new OvalShape()));
+        binding.profile.setClipToOutline(true);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", getContext().MODE_PRIVATE);    // test 이름의 기본모드 설정
+        String name = sharedPreferences.getString("name", "");
+        String profile = sharedPreferences.getString("profile", "");
+        String id = sharedPreferences.getString("id", "");
+
+        binding.name.setText(name);
+        binding.id.setText(id);
+        Log.d("adsf", profile);
+
+        downlodimg();
+        return binding.getRoot();
+
+    }
+
+    public ConstraintLayout downlodimg() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReference();
+        storageReference.child("userImages/" + uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                url = uri;
+                Glide.with(getContext()).load(url).into(binding.profile);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+
+            }
+        });
+
+        return binding.getRoot();
     }
 }

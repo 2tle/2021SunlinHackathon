@@ -26,9 +26,13 @@ import com.example.a2021sunlinhackathon.GpsTracker;
 import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.Writemodel;
 import com.example.a2021sunlinhackathon.databinding.ActivityWriteBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -94,22 +98,30 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (binding.uploadImageView!=null&&binding.posts!=null){
-
+                    binding.currentLocation.setText(address);
                     Writemodel writemodel=new Writemodel();
                     writemodel.addars=address;
                     writemodel.name=name;
                     writemodel.post=binding.posts.getText().toString();
                     writemodel.uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                     String time=getTime();
-                    FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid+time).setValue(writemodel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    FirebaseStorage.getInstance().getReference().child("postImages").child(writemodel.uid+time).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            Intent intent = new Intent(WriteActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            startActivity(intent);
-                            finish();
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+                            FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid+time).setValue(writemodel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Intent intent = new Intent(WriteActivity.this, MainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
+
                         }
                     });
+
                 }
 
 

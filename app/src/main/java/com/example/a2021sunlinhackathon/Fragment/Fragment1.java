@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.a2021sunlinhackathon.Activity.MainActivity;
 import com.example.a2021sunlinhackathon.Activity.WriteActivity;
@@ -39,11 +40,11 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
 
         ViewGroup fragment1 = (ViewGroup)inflater.inflate(R.layout.fragment_1,container,false);
 
-        Button addpost=fragment1.findViewById(R.id.addpost);
+        ImageButton addpost= (ImageButton) fragment1.findViewById(R.id.addpost);
         addpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
+                Intent intent = new Intent(getContext(), WriteActivity.class);
                 startActivity(intent);
             }
         });
