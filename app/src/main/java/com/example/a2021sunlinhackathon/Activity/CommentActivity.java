@@ -101,8 +101,8 @@ public class CommentActivity extends AppCompatActivity {
                         CommentData cd = new CommentData();
                         cd.setCommentUserProfile(s.child("id").getValue().toString());
                         cd.setCommentComment(s.child("comment").getValue().toString());
-                        cd.setCommentUsername("TEST");
-                        //cd.setCommentUsername(s.child("username").getValue().toString());
+                        //cd.setCommentUsername("TEST");
+                        cd.setCommentUsername(s.child("name").getValue().toString());
                         arrayList.add(cd);
                     } catch(Exception e) {
                         Log.e(">",e.getMessage());
