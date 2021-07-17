@@ -3,10 +3,20 @@ package com.example.a2021sunlinhackathon;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.a2021sunlinhackathon.Data.BookListData;
+import com.example.a2021sunlinhackathon.Data.ProfilePostData;
+import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment1Binding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +24,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Plantfragment1 extends Fragment {
+    private ArrayList<BookListData> arrayList;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +75,23 @@ public class Plantfragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plantfragment1, container, false);
+        FragmentPlantfragment1Binding binding = FragmentPlantfragment1Binding.inflate(inflater, container,false);
+        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerp1);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+        for(int i = 0; i< 3 ; i++) {
+            BookListData blDt = new BookListData();
+            blDt.setPlantText1("첫번째");
+            blDt.setPlantText2("두번째");
+            blDt.setPlantText3("세번째");
+
+            blDt.setPlantUrl1("url1");
+            blDt.setPlantUrl2("url2");
+            blDt.setPlantUrl3("url3");
+            arrayList.add(blDt);
+        }
+        return binding.getRoot();
     }
 }

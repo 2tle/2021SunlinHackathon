@@ -6,7 +6,7 @@
     tools:context=".Plantfragment1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler1"
+        android:id="@+id/recyclerp1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
