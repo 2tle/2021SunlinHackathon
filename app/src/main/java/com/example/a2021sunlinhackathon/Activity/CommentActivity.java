@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Adapter.CommentAdapter;
 import com.example.a2021sunlinhackathon.Data.CommentData;
 import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.R;
@@ -18,8 +19,11 @@ import com.example.a2021sunlinhackathon.databinding.ActivityCommentBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -83,7 +87,34 @@ public class CommentActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
-        mDatabase = FirebaseDatabase.getInstance().getReference("Posts");
+        mDatabase = FirebaseDatabase.getInstance().getReference("Posts/"+postId+"/comment");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                arrayList.clear();
+                for(DataSnapshot s : snapshot.getChildren()) {
+                    try {
+                        CommentData cd = new CommentData();
+                        cd.setCommentUserProfile(s.child("id").getValue().toString());
+                        cd.setCommentComment(s.child("comment").getValue().toString());
+                        cd.setCommentUsername("TEST");
+                        //cd.setCommentUsername(s.child("username").getValue().toString());
+                        arrayList.add(cd);
+                    } catch(Exception e) {
+                        Log.e(">",e.getMessage());
+                    }
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+        adapter = new CommentAdapter(arrayList, this);
+        recyclerView.setAdapter(adapter);
 
     }
     private String getTime(){
