@@ -14,7 +14,8 @@
             <ImageView
                 android:id="@+id/postProfileImage"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
