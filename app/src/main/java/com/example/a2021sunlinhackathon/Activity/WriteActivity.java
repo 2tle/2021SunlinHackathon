@@ -35,6 +35,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -111,10 +112,17 @@ public class WriteActivity extends AppCompatActivity {
                     FirebaseStorage.getInstance().getReference().child("postImages").child(uid+time).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            for (int i=0;i<10;i++){
+
+                            }
 
                             FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid+time).setValue(writemodel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+
+                                    FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid+time).child("0").setValue("0");
+
+
                                     Intent intent = new Intent(WriteActivity.this, MainActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     startActivity(intent);

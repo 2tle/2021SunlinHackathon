@@ -7,9 +7,8 @@ public class Writemodel {
     public String addars;
     public String uid;
     public String postid;
-    public class love{
-        boolean name=true;
-    }
+    public int count=1;
+
 
 
 }
