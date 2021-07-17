@@ -31,6 +31,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,7 +41,9 @@ public class WriteActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     Uri selectedImageUri;
     private GpsTracker gpsTracker;
-
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -96,8 +100,8 @@ public class WriteActivity extends AppCompatActivity {
                     writemodel.name=name;
                     writemodel.post=binding.posts.getText().toString();
                     writemodel.uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                    FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid).setValue(writemodel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    String time=getTime();
+                    FirebaseDatabase.getInstance().getReference().child("Posts").child(writemodel.uid+time).setValue(writemodel).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Intent intent = new Intent(WriteActivity.this, MainActivity.class);
@@ -306,6 +310,11 @@ public class WriteActivity extends AppCompatActivity {
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.a2021sunlinhackathon.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,8 +12,10 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.a2021sunlinhackathon.Activity.MainActivity;
+import com.example.a2021sunlinhackathon.Activity.WriteActivity;
 import com.example.a2021sunlinhackathon.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,6 +39,14 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
 
         ViewGroup fragment1 = (ViewGroup)inflater.inflate(R.layout.fragment_1,container,false);
 
+        Button addpost=fragment1.findViewById(R.id.addpost);
+        addpost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return fragment1;
     }

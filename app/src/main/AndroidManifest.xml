@@ -18,15 +18,17 @@
 
 
         <activity android:name=".Activity.UserFrofile">
+
+        </activity>
+        <activity android:name=".Activity.JoinActivity" />
+        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.LodingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.JoinActivity" />
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.LodingActivity"></activity>
         <activity android:name=".Activity.MainActivity" />
     </application>
 
