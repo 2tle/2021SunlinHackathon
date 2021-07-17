@@ -86,8 +86,7 @@ public class Fragment2 extends Fragment {
         // Inflate the layout for this fragment
 
         Fragment2Binding binding = Fragment2Binding.inflate(inflater, container, false);
-        //binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
-        //binding.plant.setClipToOutline(true);
+
         String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         binding.bbbb.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +128,7 @@ public class Fragment2 extends Fragment {
 
             }
         });
-        DatabaseReference j = database.getReference("UserProfile").child(uid).child("flant");
+        DatabaseReference j = database.getReference("UserProfile").child(uid).child("plant");
         j.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

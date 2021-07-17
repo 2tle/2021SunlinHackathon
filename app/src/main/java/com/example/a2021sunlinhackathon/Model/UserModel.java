@@ -6,5 +6,5 @@ public class UserModel {
     public String profileImageUrl;
     public  String uid;
     public int  water=0;
-    public int flant;
+    public int plant;
 }
