@@ -182,7 +182,8 @@ public class JoinActivity extends AppCompatActivity {
                                                 userModel.id = id;
                                                 userModel.name = name;
                                                 userModel.profileImageUrl = imageUrl;
-                                                userModel.flant= (int)(Math.random()*9)+1;
+                                                userModel.plant= 0;
+                                                userModel.kind=(int)(Math.random()*9)+1;
                                                 userModel.uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                                 FirebaseDatabase.getInstance().getReference().child("UserProfile").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {

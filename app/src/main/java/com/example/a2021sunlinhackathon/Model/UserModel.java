@@ -7,4 +7,5 @@ public class UserModel {
     public  String uid;
     public int  water=0;
     public int plant;
+    public int kind;
 }
