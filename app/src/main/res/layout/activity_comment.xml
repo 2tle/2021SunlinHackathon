@@ -26,7 +26,6 @@
             android:id="@+id/writerProfile" />
 
         <EditText
-
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:id="@+id/commentInput"/>
