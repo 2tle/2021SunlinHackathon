@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a2021sunlinhackathon.Adapter.BookListAdapter;
 import com.example.a2021sunlinhackathon.Data.BookListData;
+import com.example.a2021sunlinhackathon.databinding.Fragment2Binding;
 import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment1Binding;
 import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment2Binding;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +32,7 @@ public class Plantfragment2 extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-
+    private FragmentPlantfragment2Binding binding;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,7 +77,7 @@ public class Plantfragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentPlantfragment2Binding binding = FragmentPlantfragment2Binding.inflate(inflater, container,false);
-        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerp1);
+        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerp2);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -90,7 +92,12 @@ public class Plantfragment2 extends Fragment {
             blDt.setPlantUrl2("url2");
             blDt.setPlantUrl3("url3");
             arrayList.add(blDt);
+
         }
+        BookListAdapter bookListAdapter=new BookListAdapter(arrayList);
+
+
+        recyclerView.setAdapter(bookListAdapter);
         return binding.getRoot();
     }
 }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a2021sunlinhackathon.Adapter.BookListAdapter;
 import com.example.a2021sunlinhackathon.Data.BookListData;
 import com.example.a2021sunlinhackathon.Data.ProfilePostData;
 import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment1Binding;
@@ -92,6 +93,10 @@ public class Plantfragment1 extends Fragment {
             blDt.setPlantUrl3("url3");
             arrayList.add(blDt);
         }
+        BookListAdapter bookListAdapter=new BookListAdapter(arrayList);
+
+
+        recyclerView.setAdapter(bookListAdapter);
         return binding.getRoot();
     }
 }

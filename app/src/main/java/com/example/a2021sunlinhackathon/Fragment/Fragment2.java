@@ -75,7 +75,7 @@ public class Fragment2 extends Fragment {
         binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
         binding.plant.setClipToOutline(true);
 
-        binding.imgbutton.setOnClickListener(new View.OnClickListener() {
+        binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

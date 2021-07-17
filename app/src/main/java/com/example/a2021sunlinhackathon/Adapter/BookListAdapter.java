@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewHolder> {
     private ArrayList<BookListData> arrayList;
     private Context context;
-    public BookListAdapter(ArrayList<BookListData> arrayList, Context context) {
+    public BookListAdapter(ArrayList<BookListData> arrayList) {
         this.arrayList = arrayList;
         this.context = context;
     }
