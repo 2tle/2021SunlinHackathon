@@ -7,6 +7,15 @@ public class PostData {
     public String post; //
     public String uid; // 사용자 고유값
     public String addars; // 없음?
+    public String postid;
+
+    public String getPostid() {
+        return postid;
+    }
+
+    public void setPostid(String postid) {
+        this.postid = postid;
+    }
 
     public String getAddars() {
         return addars;
