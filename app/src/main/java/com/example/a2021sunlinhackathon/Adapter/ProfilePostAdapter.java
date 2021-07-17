@@ -1,6 +1,7 @@
 package com.example.a2021sunlinhackathon.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Activity.ProfilePostActivity;
 import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.Data.ProfilePostData;
 import com.example.a2021sunlinhackathon.R;
@@ -30,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
 
 public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.ProfilePostViewHolder> {
     //public
@@ -72,6 +75,14 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
             @Override
             public void onClick(View v) {
                 //Intent로 데이터 싹 넘기
+                Intent leftIntent = new Intent(context, ProfilePostActivity.class);
+                leftIntent.putExtra("name",arrayList.get(position).getL_name());
+                leftIntent.putExtra("post",arrayList.get(position).getL_post());
+                leftIntent.putExtra("uid",arrayList.get(position).getL_uid());
+                leftIntent.putExtra("addars",arrayList.get(position).getL_addars());
+                leftIntent.putExtra("postid",arrayList.get(position).getL_postid());
+                leftIntent.putExtra("isHeartPushed",arrayList.get(position).isL_isHeartPushed());
+                context.startActivity(leftIntent);
             }
         });
         if(!arrayList.get(position).getR_postid().equals("NODATA")) {
@@ -91,6 +102,14 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 @Override
                 public void onClick(View v) {
                     //Intent로 데이터 싹 넘겨버리기
+                    Intent leftIntent = new Intent(context, ProfilePostActivity.class);
+                    leftIntent.putExtra("name",arrayList.get(position).getR_name());
+                    leftIntent.putExtra("post",arrayList.get(position).getR_post());
+                    leftIntent.putExtra("uid",arrayList.get(position).getR_uid());
+                    leftIntent.putExtra("addars",arrayList.get(position).getR_addars());
+                    leftIntent.putExtra("postid",arrayList.get(position).getR_postid());
+                    leftIntent.putExtra("isHeartPushed",arrayList.get(position).isR_isHeartPushed());
+                    context.startActivity(leftIntent);
                 }
             });
         } else {
