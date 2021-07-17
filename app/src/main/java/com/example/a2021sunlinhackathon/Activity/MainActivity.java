@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.a2021sunlinhackathon.Fragment.Fragment1;
@@ -12,13 +13,19 @@ import com.example.a2021sunlinhackathon.Fragment.Fragment3;
 import com.example.a2021sunlinhackathon.Fragment.Fragment4;
 import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.databinding.ActivityMainBinding;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager=getSupportFragmentManager();
-
+    private AdView mAdView;
     private BottomNavigationView mBottomNV;
     ActivityMainBinding binding;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -29,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         View view=binding.getRoot();
         setContentView(view);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+
+
+
+
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.bottomview,new Fragment1()).commit();
 
