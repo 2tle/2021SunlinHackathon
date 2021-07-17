@@ -172,7 +172,7 @@ public class JoinActivity extends AppCompatActivity {
                                         Database database =new Database();
                                         database.login(JoinActivity.this, email, id, pwe);
                                         String uid=task.getResult().getUser().getUid();
-
+                                        database.user(JoinActivity.this,id,name);
                                         FirebaseStorage.getInstance().getReference().child("userImages").child(uid).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

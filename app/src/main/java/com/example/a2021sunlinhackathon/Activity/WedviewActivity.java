@@ -13,6 +13,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.a2021sunlinhackathon.R;
 
@@ -25,7 +26,7 @@ public class WedviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wedview);
         mWebView = (WebView) findViewById(R.id.webview);
-        Button button=findViewById(R.id.button);
+        ImageView button=findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
