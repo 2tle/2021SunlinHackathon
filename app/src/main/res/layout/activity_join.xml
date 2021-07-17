@@ -23,14 +23,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center">
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/danpoo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
 
-        </ImageView>
         <ImageView
             android:id="@+id/profile"
             android:layout_width="100dp"
