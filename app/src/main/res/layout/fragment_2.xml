@@ -8,6 +8,35 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:id="@+id/WaterButton"
+        android:background="@drawable/ic_rectangle_30"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/image_1366"
+        app:layout_constraintTop_toTopOf="@id/WaterButton"
+        app:layout_constraintLeft_toLeftOf="@id/WaterButton"
+        app:layout_constraintRight_toLeftOf="@id/waterCnt"
+        app:layout_constraintBottom_toBottomOf="@id/WaterButton"
+        android:id="@+id/waterImg" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/waterImg"
+        app:layout_constraintTop_toTopOf="@id/WaterButton"
+        app:layout_constraintRight_toRightOf="@id/WaterButton"
+        app:layout_constraintBottom_toBottomOf="@id/WaterButton"
+        android:text="10"
+        android:id="@+id/waterCnt" />
+
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +58,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/button">
 
     </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/WaterButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="식물도감을 완성할 때 마다 물이 주\n어집니다.Shop의 상품 구매를 통\n해 주어진 물을 사용하세요."
+        android:background="@drawable/group_178"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:visibility="invisible"
+        android:id="@+id/helpText"
+        />
     <com.dinuscxj.progressbar.CircleProgressBar
         android:id="@+id/cpb_circlebar"
         android:layout_width="300dp"
