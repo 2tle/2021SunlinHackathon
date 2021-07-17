@@ -1,6 +1,7 @@
 package com.example.a2021sunlinhackathon.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.Data.ShopData;
 import com.example.a2021sunlinhackathon.R;
+import com.example.a2021sunlinhackathon.WedviewActivity;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -39,14 +41,17 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
         holder.ib_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent mItt = new Intent(context, WedviewActivity.class);
+                mItt.putExtra("url",arrayList.get(position).getLeftOutUrl());
+                context.startActivity(mItt);
             }
         });
         holder.ib_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                Intent mItt = new Intent(context, WedviewActivity.class);
+                mItt.putExtra("url",arrayList.get(position).getRightOutUrl());
+                context.startActivity(mItt);
             }
         });
     }
