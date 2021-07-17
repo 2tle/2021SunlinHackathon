@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,8 +60,8 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
     public int getItemCount() { return (arrayList != null ? arrayList.size() : 0);}
 
     public class ShopViewHolder extends RecyclerView.ViewHolder {
-        public ImageButton ib_left;
-        public ImageButton ib_right;
+        public ImageView ib_left;
+        public ImageView ib_right;
         public ShopViewHolder(@NonNull View itemView) {
             super(itemView);
             ib_left = itemView.findViewById(R.id.leftImageButton);

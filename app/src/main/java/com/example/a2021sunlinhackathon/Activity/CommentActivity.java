@@ -33,6 +33,8 @@ public class CommentActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
+
+    String tltile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,9 @@ public class CommentActivity extends AppCompatActivity {
         binding.sendComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase = FirebaseDatabase.getInstance().getReference("Posts");
+                FirebaseDatabase.getInstance().getReference().child("Posts").child(tltile).child("comment").setValue(binding.commentInput.getText().toString());
+
+
             }
         });
 
