@@ -13,33 +13,36 @@
         android:text="뒤로가기"
         android:id="@+id/cmtBackButton"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintTop_toBottomOf="@id/cmtBackButton"
-        android:id="@+id/commentLinear">
+        app:layout_constraintRight_toLeftOf="@id/commentInput"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/writerProfile" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/writerProfile" />
+    <EditText
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cmtBackButton"
+        app:layout_constraintLeft_toRightOf="@id/writerProfile"
+        app:layout_constraintRight_toLeftOf="@id/sendComment"
+        android:id="@+id/commentInput"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toBottomOf="@id/cmtBackButton"
+        app:layout_constraintLeft_toRightOf="@id/commentInput"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="작성"
+        android:id="@+id/sendComment"/>
 
-        <EditText
 
-            android:layout_width="310dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/commentInput"/>
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-            android:text="작성"
-            android:id="@+id/sendComment"/>
-
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@id/commentLinear"
+        app:layout_constraintTop_toBottomOf="@id/commentInput"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/commentRecycler" />
