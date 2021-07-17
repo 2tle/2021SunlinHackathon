@@ -58,6 +58,7 @@
         android:id="@+id/imgbutton"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:background="@drawable/ic_vector"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

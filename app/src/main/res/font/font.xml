@@ -15,4 +15,8 @@
         android:font="@font/patrickhandscregular">
 
     </font>
+    <font
+        android:font="@font/thenamum">
+
+    </font>
 </font-family>
