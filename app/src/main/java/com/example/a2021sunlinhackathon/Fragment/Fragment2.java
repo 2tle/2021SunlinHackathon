@@ -158,11 +158,13 @@ public class Fragment2 extends Fragment {
                 startActivity(intent);
             }
         });
+
         binding.imgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 data.waterplat(getContext(), water,plant);
-                data.lvup(water,kind,binding.plant);
+                data.lvup(water,plant,binding.plant);
 
             }
         });

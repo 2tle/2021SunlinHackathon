@@ -153,7 +153,6 @@ public class LodingActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 frofile= dataSnapshot.getValue(String.class);
-                Log.d("asdf",frofile);
                 SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
                 SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
                 editor.putString("profile",frofile);

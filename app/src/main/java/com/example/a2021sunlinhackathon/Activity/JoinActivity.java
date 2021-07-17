@@ -154,10 +154,8 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(binding.profile.getDrawable()==null){
-                    binding.profile.setImageResource(R.drawable.ic_launcher_foreground);
-                }
-                if(pawtrue&&emailtrue&&naemtrue&&binding.profile!=null) {
+
+                if(pawtrue&&emailtrue&&naemtrue&&binding.profile.getBackground()!=null) {
                     final String email = binding.idinput.getText().toString().trim();
                     final String pwe = binding.pawinput1.getText().toString().trim();
                     final String name =binding.nameinput.getText().toString().trim();
