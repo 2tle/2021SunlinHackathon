@@ -1,6 +1,7 @@
 package com.example.a2021sunlinhackathon;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -24,6 +33,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         this.arrayList = arrayList;
         this.context = context;
     }
+
+
+
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item, parent, false);
@@ -32,12 +44,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+
         //userProfile => 지금 로그인 된 유저프로필, bestComment => 댓글 있으면 그중에서 좋은 댓글 하나 보여주기
+        /*
         Glide.with(holder.itemView).load(arrayList.get(position).getProfileImageUrl()).into(holder.iv_profile);
-        Glide.with(holder.itemView).load(arrayList.get(position).getUserUploadImageUrl()).into(holder.iv_userUpload);
+        Glide.with(holder.itemView).load(arrayList.get(position).getUserUploadImageUrl()).into(holder.iv_userUpload); */
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReference();
+        storageReference.child("userImages/"+arrayList.get(position).getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(context).load(uri).into(holder.iv_profile);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+
+            }
+        });
+
+
+
+
         holder.tv_username.setText(arrayList.get(position).getName());
-        holder.tv_userText.setText(arrayList.get(position).getText());
-        holder.tv_location.setText(arrayList.get(position).getLocation());
+        holder.tv_userText.setText(arrayList.get(position).getPost());
+        holder.tv_location.setText(arrayList.get(position).getAddars());
 
         holder.ib_heartBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,28 +1,19 @@
 package com.example.a2021sunlinhackathon;
 
 public class PostData {
-    public String profileImageUrl;
-    public String name;
-    public String userUploadImageUrl;
-    public String text;
-    public String uid;
-    public String userid;
-    public String location;
+    //public String profileImageUrl;
+    public String name; //
+    //public String userUploadImageUrl;
+    public String post; //
+    public String uid; // 사용자 고유값
+    public String addars; // 없음?
 
-    public String getLocation() {
-        return location;
+    public String getAddars() {
+        return addars;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setAddars(String addars) {
+        this.addars = addars;
     }
 
     public String getUid() {
@@ -33,12 +24,12 @@ public class PostData {
         this.uid = uid;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getPost() {
+        return post;
     }
 
-    public String getText() {
-        return text;
+    public void setPost(String post) {
+        this.post = post;
     }
 
     public String getName() {
@@ -48,7 +39,7 @@ public class PostData {
     public void setName(String name) {
         this.name = name;
     }
-
+    /*
     public String getProfileImageUrl() {
         return profileImageUrl;
     }
@@ -57,12 +48,12 @@ public class PostData {
         this.profileImageUrl = profileImageUrl;
     }
 
-    public String getUserUploadImageUrl() {
-        return userUploadImageUrl;
-    }
-
     public void setUserUploadImageUrl(String userUploadImageUrl) {
         this.userUploadImageUrl = userUploadImageUrl;
     }
+
+    public String getUserUploadImageUrl() {
+        return userUploadImageUrl;
+    } */
 }
 
