@@ -98,7 +98,15 @@ public class Fragment3 extends Fragment {
                 arrayList.clear();
                 for(DataSnapshot s : snapshot.getChildren()) {
                     try {
-                        ShopData shopData = new ShopData(s.child("Photo1").getValue().toString(), s.child("Id1").getValue().toString(), s.child("Photo2").getValue().toString(), s.child("Id2").getValue().toString());
+                        ShopData shopData = new ShopData();
+                        shopData.setLeftImageUrl(s.child("Photo1").getValue().toString());
+                        shopData.setLeftOutUrl(s.child("outUrl1").getValue().toString());
+                        shopData.setLeftShopId(s.child("Id1").getValue().toString());
+                        shopData.setRightImageUrl(s.child("Photo2").getValue().toString());
+                        shopData.setRightOutUrl(s.child("outUrl2").getValue().toString());
+                        shopData.setRightShopId(s.child("Id2").getValue().toString());
+
+                        //ShopData shopData = new ShopData(s.child("Photo1").getValue().toString(), s.child("Id1").getValue().toString(), s.child("Photo2").getValue().toString(), s.child("Id2").getValue().toString());
                         arrayList.add(shopData);
                     } catch (Exception e) {
                         Log.e(">",e.getMessage());
