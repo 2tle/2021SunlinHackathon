@@ -19,6 +19,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
     public FragmentAdapter(FragmentManager fm) {
         super(fm);
         items = new ArrayList<Fragment>();
+
         items.add(new ShopFragment());
         items.add(new DonateFragment());
 
