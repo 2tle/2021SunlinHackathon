@@ -18,14 +18,12 @@ import java.util.Locale;
 public class Database {
     public void ppp(Context context,int a){
         if(a==0) {
-
-        }else{
+            String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
             int ran=(int)(Math.random()*9)+1;
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+             database.getReference("UserProfile").child(uid).child("kind").setValue(ran);
+        }else{
 
-            SharedPreferences sharedPreferences= context.getSharedPreferences("User",context.MODE_PRIVATE);    // test 이름의 기본모드 설정
-            SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
-            editor.putInt("kind",ran);
-            editor.commit();
 
 
         }
@@ -71,6 +69,7 @@ public class Database {
     public void lvup(int w , int f ,ImageView imageView){
         if(w<10){
             switch (f){
+                //1단계
                 case 1:
                     imageView.setImageResource(R.drawable.flower1);
                     break;
@@ -105,6 +104,7 @@ public class Database {
             }
         }else if(w>=10&&w<15){
             switch (f){
+                //2단계
                 case 1:
                     imageView.setImageResource(R.drawable.flower2);
                     break;
@@ -140,26 +140,28 @@ public class Database {
 
         }else if(w>=15&&w<25){
             switch (f){
+                //3단계
                 case 1:
-                    imageView.setImageResource(R.drawable.flower3);
+                    //3단계
+                    imageView.setImageResource(R.drawable.flower5);
                     break;
                 case 2:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.tree4);
                     break;
                 case 3:
 
                     break;
                 case 4:
-                    imageView.setImageResource(R.drawable.flower3);
+                    imageView.setImageResource(R.drawable.flower5);
                     break;
                 case 5:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.tree4);
                     break;
                 case 6:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.tree4);
                     break;
                 case 7:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.tree4);
                     break;
                 case 8:
                     break;
@@ -175,34 +177,36 @@ public class Database {
 
         }else if(w>=25&&w<40){
             switch (f){
+                //4단계
                 case 1:
-                    imageView.setImageResource(R.drawable.flower3);
+                    imageView.setImageResource(R.drawable.flower5);
                     break;
                 case 2:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.sacula);
                     break;
                 case 3:
-
+                    imageView.setImageResource(R.drawable.mario);
                     break;
                 case 4:
-                    imageView.setImageResource(R.drawable.flower3);
+                    imageView.setImageResource(R.drawable.flower5);
                     break;
                 case 5:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.dmoskan);
                     break;
                 case 6:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.danpoo);
                     break;
                 case 7:
-                    imageView.setImageResource(R.drawable.tree3);
+                    imageView.setImageResource(R.drawable.apple);
                     break;
                 case 8:
+                    imageView.setImageResource(R.drawable.sugog);
                     break;
                 case 9:
-                    imageView.setImageResource(R.drawable.flower3);
+                    imageView.setImageResource(R.drawable.flower4);
                     break;
                 case 10:
-                    imageView.setImageResource(R.drawable.ma3);
+                    imageView.setImageResource(R.drawable.ma5);
                     break;
 
 
@@ -211,7 +215,53 @@ public class Database {
 
 
         }else if (w>=40){
+            switch (f){
+                //4단계
+                case 1:
+                    imageView.setImageResource(R.drawable.sunflow);
 
+                    break;
+                case 2:
+                    imageView.setImageResource(R.drawable.sacula);
+
+                    break;
+                case 3:
+                    imageView.setImageResource(R.drawable.mario);
+
+                    break;
+                case 4:
+                    imageView.setImageResource(R.drawable.napal);
+
+                    break;
+                case 5:
+                    imageView.setImageResource(R.drawable.dmoskan);
+
+                    break;
+                case 6:
+                    imageView.setImageResource(R.drawable.danpoo);
+
+                    break;
+                case 7:
+                    imageView.setImageResource(R.drawable.apple);
+
+                    break;
+                case 8:
+                    imageView.setImageResource(R.drawable.sugog);
+
+                    break;
+                case 9:
+                    imageView.setImageResource(R.drawable.flower4);
+
+                    break;
+                case 10:
+                    imageView.setImageResource(R.drawable.ma5);
+
+                    break;
+
+
+
+
+            }
         }
     }
     public void login(Context context, String email, String id, String pwe) {

@@ -90,6 +90,13 @@ public class Fragment2 extends Fragment {
         //binding.plant.setClipToOutline(true);
         String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        binding.bbbb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.bbbb.setVisibility(View.INVISIBLE);
+                data.ppp(getContext(),0);
+            }
+        });
         DatabaseReference w = database.getReference("UserProfile").child(uid).child("water");
         w.addValueEventListener(new ValueEventListener() {
             @Override

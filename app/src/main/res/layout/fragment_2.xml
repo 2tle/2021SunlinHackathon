@@ -114,5 +114,12 @@
         android:layout_marginBottom="50dp">
 
     </ImageButton>
+    <Button
+        android:id="@+id/bbbb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="25sp"
+        android:text="축하합니다 식물을 성공적으로 \n키우셨습니다!">
 
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
