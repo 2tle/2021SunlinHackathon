@@ -62,7 +62,12 @@ public class CommentActivity extends AppCompatActivity {
         binding.sendComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference().child("Posts").child(tltile).child("comment").setValue(binding.commentInput.getText().toString());
+                FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid).setValue(binding.commentInput.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        binding.commentInput.setText("");
+                    }
+                });
 
 
             }
