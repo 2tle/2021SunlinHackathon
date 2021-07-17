@@ -82,17 +82,23 @@ public class Plantfragment1 extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
-        for(int i = 0; i< 3 ; i++) {
-            BookListData blDt = new BookListData();
-            blDt.setPlantText1("첫번째");
-            blDt.setPlantText2("두번째");
-            blDt.setPlantText3("세번째");
+        BookListData blDt = new BookListData();
+        blDt.setPlantText1("해바라기");
+        blDt.setPlantText2("벚꽃");
+        blDt.setPlantText3("뻐끔플라워");
 
-            blDt.setPlantUrl1("url1");
-            blDt.setPlantUrl2("url2");
-            blDt.setPlantUrl3("url3");
-            arrayList.add(blDt);
-        }
+        blDt.setPlantUrl1("url1");
+        blDt.setPlantUrl2("url2");
+        blDt.setPlantUrl3("url3");
+
+        blDt.setPlantText1("나팔꽃");
+        blDt.setPlantText2("등나무");
+        blDt.setPlantText3("단풍나무");
+
+        blDt.setPlantUrl1("url1");
+        blDt.setPlantUrl2("url2");
+        blDt.setPlantUrl3("url3");
+        arrayList.add(blDt);
         BookListAdapter bookListAdapter=new BookListAdapter(arrayList);
 
 
