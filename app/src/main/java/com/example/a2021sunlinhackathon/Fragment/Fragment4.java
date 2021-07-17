@@ -130,8 +130,8 @@ public class Fragment4 extends Fragment {
         storageReference.child("userImages/" + uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                url = uri;
-                Glide.with(getContext()).load(url).into(binding.profile);
+                //url = uri;
+                Glide.with(getContext()).load(uri).into(binding.profile);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
