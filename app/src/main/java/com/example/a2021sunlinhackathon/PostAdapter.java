@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -79,13 +80,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public ImageView iv_userUpload;
         public TextView tv_userText;
 
-        public ImageView iv_userProfile;
+
 
         public ImageButton ib_heartBtn;
         public ImageButton ib_commentBtn;
 
         public TextView tv_bestCommentUsername;
         public TextView tv_bestCommentText;
+
+        public ImageView iv_userProfile;
+        public EditText et_comment;
         public Button btn_sendComment;
 
 
@@ -103,6 +107,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_bestCommentUsername = itemView.findViewById(R.id.bestCommentUsername);
             tv_bestCommentText = itemView.findViewById(R.id.bestComment);
             btn_sendComment = itemView.findViewById(R.id.sendCommentButton);
+            et_comment = itemView.findViewById(R.id.userCommentInput);
 
         }
     }
