@@ -6,14 +6,14 @@
         android:id="@+id/item_fragment1"
         android:enabled="true"
         android:title="Home"
-        app:cnb_iconColor="#DF943D">
+        app:cnb_iconColor="#71C34A">
 
     </item>
     <item
         android:id="@+id/item_fragment2"
         android:enabled="true"
         android:title="Graph"
-        app:cnb_iconColor="#DF943D"
+        app:cnb_iconColor="#71C34A"
         >
 
     </item>
@@ -21,14 +21,14 @@
         android:id="@+id/item_fragment3"
         android:enabled="true"
         android:title="cam"
-        app:cnb_iconColor="#DF943D">
+        app:cnb_iconColor="#71C34A">
 
     </item>
     <item
         android:id="@+id/item_fragment4"
         android:enabled="true"
         android:title="friend"
-        app:cnb_iconColor="#DF943D">
+        app:cnb_iconColor="#71C34A">
 
     </item>
 
