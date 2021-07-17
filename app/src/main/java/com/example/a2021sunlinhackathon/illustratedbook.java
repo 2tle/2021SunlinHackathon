@@ -11,6 +11,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.example.a2021sunlinhackathon.Fragment.Subfragment.Plantfragment1;
+import com.example.a2021sunlinhackathon.Fragment.Subfragment.Plantfragment2;
 import com.example.a2021sunlinhackathon.databinding.ActivityIllustratedbookBinding;
 import com.google.android.material.tabs.TabLayout;
 

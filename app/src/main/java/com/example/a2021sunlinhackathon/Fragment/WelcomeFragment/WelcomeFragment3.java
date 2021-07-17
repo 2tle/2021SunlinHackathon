@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Fragment.WelcomeFragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -12,24 +12,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class WelcomeFragment1 extends Fragment {
+import com.example.a2021sunlinhackathon.R;
 
-    private WelcomeFragment1ViewModel mViewModel;
+public class WelcomeFragment3 extends Fragment {
 
-    public static WelcomeFragment1 newInstance() {
-        return new WelcomeFragment1();
+    private WelcomeFragment3ViewModel mViewModel;
+
+    public static WelcomeFragment3 newInstance() {
+        return new WelcomeFragment3();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.welcome_fragment1_fragment, container, false);
+        return inflater.inflate(R.layout.welcome_fragment3_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(WelcomeFragment1ViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WelcomeFragment3ViewModel.class);
         // TODO: Use the ViewModel
     }
 

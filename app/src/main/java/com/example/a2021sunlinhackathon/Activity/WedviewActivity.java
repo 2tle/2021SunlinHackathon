@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-import com.example.a2021sunlinhackathon.Activity.JoinActivity;
-import com.example.a2021sunlinhackathon.Activity.MainActivity;
-import com.example.a2021sunlinhackathon.Activity.Welcome;
+import com.example.a2021sunlinhackathon.R;
 
 public class WedviewActivity extends AppCompatActivity {
     private WebView mWebView;

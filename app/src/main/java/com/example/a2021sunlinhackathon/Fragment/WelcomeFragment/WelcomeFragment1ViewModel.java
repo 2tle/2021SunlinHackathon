@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Fragment.WelcomeFragment;
 
 import androidx.lifecycle.ViewModel;
 

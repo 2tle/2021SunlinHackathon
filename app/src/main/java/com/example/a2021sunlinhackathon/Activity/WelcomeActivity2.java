@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+
+import com.example.a2021sunlinhackathon.Fragment.WelcomeFragment.WelcomeFragment1;
+import com.example.a2021sunlinhackathon.Fragment.WelcomeFragment.WelcomeFragment2;
+import com.example.a2021sunlinhackathon.R;
 
 import me.relex.circleindicator.CircleIndicator;
 

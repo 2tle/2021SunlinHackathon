@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2021SunlinHackathon">
-        <activity android:name=".WelcomeActivity2">
+        <activity android:name=".Activity.WelcomeActivity2">
         </activity>
 
         <meta-data
@@ -21,9 +21,9 @@
             android:value="@string/admob_app_id" />
 
         <activity android:name=".Activity.ProfilePostActivity" />
-        <activity android:name=".Plantpage" />
+        <activity android:name=".Activity.Plantpage" />
         <activity android:name=".illustratedbook" />
-        <activity android:name=".WedviewActivity" />
+        <activity android:name=".Activity.WedviewActivity" />
         <activity android:name=".Activity.Welcome" />
         <activity android:name=".Activity.Editprofile" />
         <activity android:name=".Activity.WriteActivity" />

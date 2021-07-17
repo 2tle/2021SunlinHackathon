@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Fragment.Subfragment;
 
 import android.os.Bundle;
 
@@ -12,9 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.a2021sunlinhackathon.Adapter.BookListAdapter;
 import com.example.a2021sunlinhackathon.Data.BookListData;
-import com.example.a2021sunlinhackathon.databinding.Fragment2Binding;
+import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment1Binding;
-import com.example.a2021sunlinhackathon.databinding.FragmentPlantfragment2Binding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,17 +21,17 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Plantfragment2#newInstance} factory method to
+ * Use the {@link Plantfragment1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Plantfragment2 extends Fragment {
+public class Plantfragment1 extends Fragment {
     private ArrayList<BookListData> arrayList;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-    private FragmentPlantfragment2Binding binding;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,7 +41,7 @@ public class Plantfragment2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Plantfragment2() {
+    public Plantfragment1() {
         // Required empty public constructor
     }
 
@@ -52,11 +51,11 @@ public class Plantfragment2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Plantfragment2.
+     * @return A new instance of fragment Plantfragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Plantfragment2 newInstance(String param1, String param2) {
-        Plantfragment2 fragment = new Plantfragment2();
+    public static Plantfragment1 newInstance(String param1, String param2) {
+        Plantfragment1 fragment = new Plantfragment1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,30 +75,30 @@ public class Plantfragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentPlantfragment2Binding binding = FragmentPlantfragment2Binding.inflate(inflater, container,false);
-        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerp2);
+        // Inflate the layout for this fragment
+        FragmentPlantfragment1Binding binding = FragmentPlantfragment1Binding.inflate(inflater, container,false);
+        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerp1);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
         BookListData blDt = new BookListData();
-        blDt.setPlantText1("사과나무");
-        blDt.setPlantText2("수국");
-        blDt.setPlantText3("튤립");
+        blDt.setPlantText1("해바라기");
+        blDt.setPlantText2("벚꽃");
+        blDt.setPlantText3("뻐끔플라워");
 
         blDt.setPlantUrl1("url1");
         blDt.setPlantUrl2("url2");
         blDt.setPlantUrl3("url3");
 
-        blDt.setPlantText1("마리모");
-        blDt.setPlantText2("추후 공개 예정");
-        blDt.setPlantText3("추후 공개 예정");
+        blDt.setPlantText1("나팔꽃");
+        blDt.setPlantText2("등나무");
+        blDt.setPlantText3("단풍나무");
 
         blDt.setPlantUrl1("url1");
         blDt.setPlantUrl2("url2");
         blDt.setPlantUrl3("url3");
         arrayList.add(blDt);
-
         BookListAdapter bookListAdapter=new BookListAdapter(arrayList);
 
 
