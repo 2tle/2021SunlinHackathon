@@ -18,6 +18,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
 
             android:value="@string/admob_app_id"/>
+        <activity android:name=".Activity.ProfilePostActivity"/>
         <activity android:name=".Plantpage"></activity>
         <activity android:name=".illustratedbook" />
         <activity android:name=".WedviewActivity" />
