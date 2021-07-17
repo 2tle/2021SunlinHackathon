@@ -112,11 +112,13 @@ public class Fragment2 extends Fragment {
 
             }
         });
-        DatabaseReference p = database.getReference("UserProfile").child(uid).child("plant");
-        p.addValueEventListener(new ValueEventListener() {
+
+
+        DatabaseReference k = database.getReference("UserProfile").child(uid).child("kind");
+        k.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                plant= dataSnapshot.getValue(Integer.class);
+                kind= dataSnapshot.getValue(Integer.class);
 
 
             }
@@ -127,9 +129,8 @@ public class Fragment2 extends Fragment {
 
             }
         });
-
-        DatabaseReference k = database.getReference("UserProfile").child(uid).child("kind");
-        k.addValueEventListener(new ValueEventListener() {
+        DatabaseReference j = database.getReference("UserProfile").child(uid).child("flant");
+        j.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 kind= dataSnapshot.getValue(Integer.class);

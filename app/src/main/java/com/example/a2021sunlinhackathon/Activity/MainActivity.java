@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         View view=binding.getRoot();
         setContentView(view);
         SharedPreferences sf = getSharedPreferences("User", MODE_PRIVATE);
-        int a = sf.getInt("plnat",0);
-        database.ppp(MainActivity.this,a);
+
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
