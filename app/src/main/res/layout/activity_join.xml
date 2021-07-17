@@ -58,18 +58,7 @@
         android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_gravity="center">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_round"
-            android:layout_marginTop="70dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
 
-        </ImageView>
 
         <ImageView
             android:id="@+id/profile"
@@ -79,10 +68,18 @@
             android:layout_marginTop="70dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
         </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile"
+            android:text="프로필 사진을 꼭 삽입하세요"
+            android:gravity="center">
+
+        </TextView>
 
         <TextView
             android:id="@+id/text"
