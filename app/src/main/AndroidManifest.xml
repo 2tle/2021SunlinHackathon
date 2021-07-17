@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2021SunlinHackathon">
-        <activity android:name=".Activity.CommentActivity"></activity>
-        <activity android:name=".Activity.WelcomeActivity2"></activity>
+        <activity android:name=".Activity.DonationActivity"></activity>
+        <activity android:name=".Activity.CommentActivity" />
+        <activity android:name=".Activity.WelcomeActivity2" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

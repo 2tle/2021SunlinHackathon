@@ -90,19 +90,23 @@ public class Plantfragment1 extends Fragment {
         blDt.setPlantUrl1("url1");
         blDt.setPlantUrl2("url2");
         blDt.setPlantUrl3("url3");
-
-        blDt.setPlantText1("나팔꽃");
-        blDt.setPlantText2("등나무");
-        blDt.setPlantText3("단풍나무");
-
-        blDt.setPlantUrl1("url1");
-        blDt.setPlantUrl2("url2");
-        blDt.setPlantUrl3("url3");
         arrayList.add(blDt);
-        BookListAdapter bookListAdapter=new BookListAdapter(arrayList);
+        BookListData blDt2 = new BookListData();
+        blDt2.setPlantText1("나팔꽃");
+        blDt2.setPlantText2("등나무");
+        blDt2.setPlantText3("단풍나무");
+
+        blDt2.setPlantUrl1("url1");
+        blDt2.setPlantUrl2("url2");
+        blDt2.setPlantUrl3("url3");
+        arrayList.add(blDt2);
 
 
-        recyclerView.setAdapter(bookListAdapter);
+
+
+        adapter = new BookListAdapter(arrayList, getContext());
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
         return binding.getRoot();
     }
 }
