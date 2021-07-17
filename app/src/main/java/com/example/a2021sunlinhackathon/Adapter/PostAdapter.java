@@ -3,9 +3,11 @@ package com.example.a2021sunlinhackathon.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.media.Image;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -128,7 +130,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     Toast.makeText(context,"이미 좋아요를 눌렀습니다.",Toast.LENGTH_LONG).show();
                 } else {
                     arrayList.get(position).isHeartPushed = true;
-                    holder.ib_heartBtn.setBackgroundColor(Color.RED);
+                    //holder.ib_heartBtn.setImageTintList(ColorStateList.valueOf(Color.parseColor("#55ff0000")));
                     arrayList.get(position).setCount(arrayList.get(position).getCount() + 1);
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart").child(arrayList.get(position).getCount()+"").setValue(useruid);
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("count").setValue(arrayList.get(position).getCount());
@@ -179,7 +181,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
 
 
-        public ImageButton ib_heartBtn;
+        //public ImageButton ib_heartBtn;
+        public ImageView ib_heartBtn;
         public TextView tv_heartCnt;
         public ImageButton ib_commentBtn;
 
