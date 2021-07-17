@@ -132,7 +132,7 @@ public class Fragment2 extends Fragment {
         j.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                kind= dataSnapshot.getValue(Integer.class);
+                plant= dataSnapshot.getValue(Integer.class);
 
 
             }
@@ -144,7 +144,7 @@ public class Fragment2 extends Fragment {
             }
         });
 
-        String a=data.flow(plant);
+        String a=data.flow(kind);
         binding.ftlite.setText(a);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
