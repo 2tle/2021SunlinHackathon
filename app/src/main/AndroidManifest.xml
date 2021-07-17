@@ -14,11 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2021SunlinHackathon">
         <activity android:name=".WelcomeActivity2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -36,7 +31,11 @@
         <activity android:name=".Activity.JoinActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.LodingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Activity.MainActivity" />
     </application>
