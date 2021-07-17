@@ -109,6 +109,9 @@ public class WriteActivity extends AppCompatActivity {
                     writemodel.post=binding.posts.getText().toString();
                     writemodel.postid=uid+time;
                     writemodel.uid= uid;
+                    ArrayList<String> temp = new ArrayList<>();
+                    temp.add("Dummy");
+                    writemodel.heart = temp;
 
                     FirebaseStorage.getInstance().getReference().child("postImages").child(uid+time).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override

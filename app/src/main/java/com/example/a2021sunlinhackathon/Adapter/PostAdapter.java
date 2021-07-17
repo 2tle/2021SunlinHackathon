@@ -1,9 +1,12 @@
 package com.example.a2021sunlinhackathon.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +23,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -46,6 +55,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         PostViewHolder holder = new PostViewHolder(view);
         return holder;
     }
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
 
@@ -89,6 +99,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
             }
         });
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Posts");
+        if(arrayList.get(position).isHeartPushed()) {
+            holder.ib_heartBtn.setBackgroundColor(Color.RED);
+        }
+        if(!arrayList.get(position).isHeartPushed()) {
+            holder.ib_heartBtn.setBackgroundColor(Color.GRAY);
+        }
+        //int cntT = arrayList.get(position).getHeart().size()-1;
+        holder.tv_heartCnt.setText("좋아요 "+arrayList.get(position).getCount()+"개");
 
 
 
@@ -100,7 +120,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.ib_heartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(arrayList.get(position).isHeartPushed) {
+                    Toast.makeText(context,"이미 좋아요를 눌렀습니다.",Toast.LENGTH_LONG).show();
+                } else {
+                    arrayList.get(position).isHeartPushed = true;
+                    holder.ib_heartBtn.setBackgroundColor(Color.RED);
+                    arrayList.get(position).setCount(arrayList.get(position).getCount() + 1);
+                    mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart").child(arrayList.get(position).getCount()+"").setValue(useruid);
+                    mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("count").setValue(arrayList.get(position).getCount());
+                    holder.tv_heartCnt.setText("좋아요 "+arrayList.get(position).getCount()+"개");
+                    //mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart")
+                }
             }
         });
 
@@ -141,6 +171,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
 
         public ImageButton ib_heartBtn;
+        public TextView tv_heartCnt;
         public ImageButton ib_commentBtn;
 
         public TextView tv_bestCommentUsername;
@@ -166,6 +197,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_bestCommentText = itemView.findViewById(R.id.bestComment);
             btn_sendComment = itemView.findViewById(R.id.sendCommentButton);
             et_comment = itemView.findViewById(R.id.userCommentInput);
+            tv_heartCnt = itemView.findViewById(R.id.heartCount);
 
             iv_profile.setBackground(new ShapeDrawable(new OvalShape()));
             iv_profile.setClipToOutline(true);
