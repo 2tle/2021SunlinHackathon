@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +47,8 @@ public class CommentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+        SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
+        String name = sharedPreferences.getString("name","");
 
         ActivityCommentBinding binding = ActivityCommentBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -73,6 +76,7 @@ public class CommentActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("id").setValue(useruid);
+                        FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("name").setValue(name);
                         binding.commentInput.setText("");
                     }
                 });
