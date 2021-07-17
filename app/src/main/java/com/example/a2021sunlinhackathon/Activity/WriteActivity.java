@@ -106,7 +106,6 @@ public class WriteActivity extends AppCompatActivity {
                     Writemodel writemodel=new Writemodel();
                     writemodel.addars=address;
                     writemodel.name=name;
-                    writemodel.titlel=binding.title.getText().toString();
                     writemodel.post=binding.posts.getText().toString();
                     writemodel.postid=uid+time;
                     writemodel.uid= uid;
