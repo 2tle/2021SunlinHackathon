@@ -36,11 +36,24 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookLi
     }
     @Override
     public void onBindViewHolder(@NonNull BookListViewHolder holder ,int position) {
-        // 이미지 넣는것만 하세요.
-        holder.iv_plant1.setImageResource(R.drawable.ic_launcher_foreground);
-        holder.iv_plant2.setImageResource(R.drawable.ic_launcher_foreground);
-        holder.iv_plant3.setImageResource(R.drawable.ic_launcher_foreground);
-
+        // 이미지 넣는것만 하세요. 해바리기 나팔꽃 사과나무 마리모(null null)
+        if(arrayList.get(position).getPlantText1().equals("해바라기")) {
+            holder.iv_plant1.setImageResource(R.drawable.sunflow); //해바라기
+            holder.iv_plant2.setImageResource(R.drawable.sacula); //벚꽃
+            holder.iv_plant3.setImageResource(R.drawable.mario); //뻐끔플라워
+        } else if(arrayList.get(position).getPlantText1().equals("나팔꽃")) {
+            holder.iv_plant1.setImageResource(R.drawable.napal); //나팔꽃
+            holder.iv_plant2.setImageResource(R.drawable.dmoskan); //등나무
+            holder.iv_plant3.setImageResource(R.drawable.dapo); //단풍나무
+        } else if(arrayList.get(position).getPlantText1().equals("사과나무")) {
+            holder.iv_plant1.setImageResource(R.drawable.apple); //사과나무
+            holder.iv_plant2.setImageResource(R.drawable.sugog); //수국
+            holder.iv_plant3.setImageResource(R.drawable.tulip); //튤립
+        } else if(arrayList.get(position).getPlantText1().equals("마리모")) {
+            holder.iv_plant1.setImageResource(R.drawable.ma5); //마리모
+            holder.iv_plant2.setImageResource(R.drawable.ic_launcher_foreground); //없음
+            holder.iv_plant3.setImageResource(R.drawable.ic_launcher_foreground); //없음
+        }
 
         //여긴 텍스트
         holder.tv_plant1.setText(arrayList.get(position).getPlantText1());
