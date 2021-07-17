@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,14 +20,26 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.Activity.Editprofile;
 
+import com.example.a2021sunlinhackathon.Adapter.PostAdapter;
+import com.example.a2021sunlinhackathon.Adapter.ProfilePostAdapter;
+import com.example.a2021sunlinhackathon.Data.PostData;
+import com.example.a2021sunlinhackathon.Data.ProfilePostData;
+import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +47,13 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class Fragment4 extends Fragment {
+    private ArrayList<ProfilePostData> arrayList;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,6 +113,16 @@ public class Fragment4 extends Fragment {
         binding.id.setText(id);
         Log.d("adsf", profile);
 
+        recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recycler4);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference("Posts");
+
+
+
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
@@ -116,6 +147,62 @@ public class Fragment4 extends Fragment {
 
             }
         });
+
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                arrayList.clear();
+                ProfilePostData pfPDt = new ProfilePostData();
+                int tmp = 0;
+                String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                //Log.d(">>>>",snapshot.getChildren());
+                for(DataSnapshot s: snapshot.getChildren()) {
+                    try {
+                        if(userid.equals(s.child("uid").getValue().toString()) &&tmp == 0) {
+                            tmp = 1;
+                            boolean isHeart = false;
+                            pfPDt.setL_name(s.child("name").getValue().toString());
+                            pfPDt.setL_addars(s.child("name").getValue().toString());
+                            pfPDt.setL_isHeartPushed(isHeart);
+                            pfPDt.setL_post(s.child("post").getValue().toString());
+                            pfPDt.setL_postid(s.child("postid").getValue().toString());
+                            pfPDt.setL_uid(s.child("uid").getValue().toString());
+                        } else if(userid.equals(s.child("uid").getValue().toString()) && tmp == 1) {
+                            boolean isHeart = false;
+                            tmp = 0;
+                            pfPDt.setR_name(s.child("name").getValue().toString());
+                            pfPDt.setR_addars(s.child("name").getValue().toString());
+                            pfPDt.setR_isHeartPushed(isHeart);
+                            pfPDt.setR_post(s.child("post").getValue().toString());
+                            pfPDt.setR_postid(s.child("postid").getValue().toString());
+                            pfPDt.setR_uid(s.child("uid").getValue().toString());
+                            arrayList.add(pfPDt);
+                        }
+
+                    } catch (Exception e) {
+                        Log.e(">",e.getMessage());
+                    }
+                }
+                if(tmp==1) {
+                    pfPDt.setR_post(null);
+                    pfPDt.setR_addars(null);
+                    pfPDt.setR_isHeartPushed(false);
+                    pfPDt.setR_name(null);
+                    pfPDt.setR_uid(null);
+                    pfPDt.setR_postid("NODATA");
+                    arrayList.add(pfPDt);
+                }
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+        adapter = new ProfilePostAdapter(arrayList,getContext());
+        recyclerView.setAdapter(adapter);
 
         return binding.getRoot();
 
