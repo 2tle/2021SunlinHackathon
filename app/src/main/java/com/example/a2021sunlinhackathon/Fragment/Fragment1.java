@@ -57,8 +57,15 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         recyclerView = (RecyclerView) fragment1.findViewById(R.id.recycler1);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+// Set the layout manager to your recyclerview
+        recyclerView.setLayoutManager(mLayoutManager);
+
+
+
+        출처: https://link2me.tistory.com/1858 [소소한 일상 및 업무TIP 다루기]
         arrayList = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference("Posts");

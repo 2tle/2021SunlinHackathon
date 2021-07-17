@@ -44,7 +44,7 @@ public class LodingActivity extends AppCompatActivity {
         String id = sf.getString("id", "");
         SharedPreferences day = getSharedPreferences("Day", MODE_PRIVATE);
         int a=day.getInt("day",0);
-        database.day(this,a);
+
 
 
         if (email != "" && pwe != "") {
