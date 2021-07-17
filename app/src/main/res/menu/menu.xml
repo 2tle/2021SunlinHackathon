@@ -30,7 +30,7 @@
     <item
         android:id="@+id/item_fragment4"
         android:enabled="true"
-        android:title="Friend"
+        android:title="Profile"
         android:icon="@drawable/user"
         app:cnb_iconColor="#71C34A">
 

@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class Fragment2 extends Fragment {
     Database data=new Database();
+    boolean isOn = false;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -94,7 +95,7 @@ public class Fragment2 extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 water= dataSnapshot.getValue(Integer.class);
-
+                binding.waterCnt.setText(water+"");
 
             }
 
@@ -152,6 +153,19 @@ public class Fragment2 extends Fragment {
                 data.waterplat(getContext(), water,plant);
                 data.lvup(water,kind,binding.plant);
 
+            }
+        });
+
+        binding.WaterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isOn) {
+                    isOn =false;
+                    binding.helpText.setVisibility(View.INVISIBLE);
+                } else {
+                    isOn =true;
+                    binding.helpText.setVisibility(View.VISIBLE);
+                }
             }
         });
         return binding.getRoot();
