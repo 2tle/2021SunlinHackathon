@@ -25,7 +25,9 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CommentActivity extends AppCompatActivity {
     private ArrayList<CommentData> arrayList;
@@ -59,12 +61,14 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
+        String time=getTime();
         binding.sendComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid).setValue(binding.commentInput.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("comment").setValue(binding.commentInput.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("id").setValue(useruid);
                         binding.commentInput.setText("");
                     }
                 });
@@ -81,5 +85,13 @@ public class CommentActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference("Posts");
 
+    }
+    private String getTime(){
+        SimpleDateFormat mFormat = new SimpleDateFormat(" yyyy-MM-dd k:mm:ss");
+        long mNow;
+        Date mDate;
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
     }
 }
