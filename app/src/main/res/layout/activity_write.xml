@@ -26,12 +26,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/sendPostButton"
-        android:layout_width="65dp"
-        android:layout_height="55dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="right"
-        android:text="전송"
+        android:src="@drawable/send"
+        android:background="#00ff0000"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 

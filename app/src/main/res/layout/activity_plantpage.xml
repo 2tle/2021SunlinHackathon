@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.Plantpage">
-    <Button
+    <ImageButton
         android:id="@+id/back_btn"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:src="@drawable/ic_back"
+        android:background="#00ff0000"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="30dp"/>
