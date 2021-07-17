@@ -36,8 +36,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
 
         ViewGroup fragment1 = (ViewGroup)inflater.inflate(R.layout.fragment_1,container,false);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.mapview);
 
         return fragment1;
     }
