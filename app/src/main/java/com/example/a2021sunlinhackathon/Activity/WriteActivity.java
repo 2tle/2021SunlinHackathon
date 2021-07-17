@@ -98,14 +98,18 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (binding.uploadImageView!=null&&binding.posts!=null){
+                    String time=getTime();
+                    String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
                     binding.currentLocation.setText(address);
                     Writemodel writemodel=new Writemodel();
                     writemodel.addars=address;
                     writemodel.name=name;
+                    writemodel.titlel=binding.title.getText().toString();
                     writemodel.post=binding.posts.getText().toString();
-                    writemodel.uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    String time=getTime();
-                    FirebaseStorage.getInstance().getReference().child("postImages").child(writemodel.uid+time).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    writemodel.postid=uid+time;
+                    writemodel.uid= uid;
+
+                    FirebaseStorage.getInstance().getReference().child("postImages").child(uid+time).putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 

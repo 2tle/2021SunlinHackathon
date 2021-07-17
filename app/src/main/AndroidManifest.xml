@@ -13,15 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2021SunlinHackathon">
-        <activity android:name=".Activity.WriteActivity"></activity>
-
-
-
-        <activity android:name=".Activity.UserFrofile">
-
-        </activity>
+        <activity android:name=".Editprofile"></activity>
+        <activity android:name=".Activity.WriteActivity" />
+        <activity android:name=".Activity.UserFrofile"></activity>
         <activity android:name=".Activity.JoinActivity" />
-        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.LodingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
