@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Activity.DonationActivity;
 import com.example.a2021sunlinhackathon.Activity.WedviewActivity;
 import com.example.a2021sunlinhackathon.Data.DonationData;
 import com.example.a2021sunlinhackathon.R;
@@ -40,16 +41,22 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.ib_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mItt = new Intent(context, WedviewActivity.class);
+                Intent mItt = new Intent(context, DonationActivity.class);
                 mItt.putExtra("url",arrayList.get(position).getLdOutUrl());
+                mItt.putExtra("name",arrayList.get(position).getLdName());
+                mItt.putExtra("exp",arrayList.get(position).getLdExp());
+                mItt.putExtra("imgUrl",arrayList.get(position).getLdPhotoUrl());
                 context.startActivity(mItt);
             }
         });
         holder.ib_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mItt = new Intent(context, WedviewActivity.class);
+                Intent mItt = new Intent(context, DonationActivity.class);
                 mItt.putExtra("url",arrayList.get(position).getRdOutUrl());
+                mItt.putExtra("name",arrayList.get(position).getRdName());
+                mItt.putExtra("exp",arrayList.get(position).getRdExp());
+                mItt.putExtra("imgUrl",arrayList.get(position).getRdPhotoUrl());
                 context.startActivity(mItt);
             }
         });
