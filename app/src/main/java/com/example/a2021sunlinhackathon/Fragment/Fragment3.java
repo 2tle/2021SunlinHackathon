@@ -1,21 +1,31 @@
 package com.example.a2021sunlinhackathon.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a2021sunlinhackathon.Adapter.FragmentAdapter;
 import com.example.a2021sunlinhackathon.Adapter.PostAdapter;
 import com.example.a2021sunlinhackathon.Adapter.ShopAdapter;
 import com.example.a2021sunlinhackathon.Data.ShopData;
+import com.example.a2021sunlinhackathon.Fragment.Subfragment.Plantfragment1;
+import com.example.a2021sunlinhackathon.Fragment.Subfragment.Plantfragment2;
 import com.example.a2021sunlinhackathon.R;
+import com.example.a2021sunlinhackathon.illustratedbook;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -80,49 +90,32 @@ public class Fragment3 extends Fragment {
         }
     }
 
+    private ViewPager mViewPager;
+    androidx.appcompat.app.ActionBar bar;
+    private FragmentManager fm;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup fragment3 = (ViewGroup)inflater.inflate(R.layout.fragment_3, container, false);
 
-        recyclerView = (RecyclerView) fragment3.findViewById(R.id.recycler3);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
-        database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference("ShopPosts");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                arrayList.clear();
-                for(DataSnapshot s : snapshot.getChildren()) {
-                    try {
-                        ShopData shopData = new ShopData();
-                        shopData.setLeftImageUrl(s.child("Photo1").getValue().toString());
-                        shopData.setLeftOutUrl(s.child("outUrl1").getValue().toString());
-                        shopData.setLeftShopId(s.child("Id1").getValue().toString());
-                        shopData.setRightImageUrl(s.child("Photo2").getValue().toString());
-                        shopData.setRightOutUrl(s.child("outUrl2").getValue().toString());
-                        shopData.setRightShopId(s.child("Id2").getValue().toString());
+        ViewGroup fragment3 = (ViewGroup) inflater.inflate(R.layout.fragment_3, container, false);
 
-                        //ShopData shopData = new ShopData(s.child("Photo1").getValue().toString(), s.child("Id1").getValue().toString(), s.child("Photo2").getValue().toString(), s.child("Id2").getValue().toString());
-                        arrayList.add(shopData);
-                    } catch (Exception e) {
-                        Log.e(">",e.getMessage());
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
+        ViewPager vp =fragment3.findViewById(R.id.viewpager);
+        FragmentAdapter adapter=new FragmentAdapter(getFragmentManager());
+        vp.setAdapter(adapter);
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.e(">fragment3>",String.valueOf(error.toException()));
-            }
-        });
-        adapter = new ShopAdapter(arrayList, getContext());
-        recyclerView.setAdapter(adapter);
+        TabLayout tab=fragment3.findViewById(R.id.tab);
+        tab.setupWithViewPager(vp);
 
         return fragment3;
     }
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+
+    }
+
+
+
 }

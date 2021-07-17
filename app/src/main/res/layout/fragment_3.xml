@@ -8,26 +8,43 @@
     tools:context=".Fragment.Fragment3">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="친환경 제품"
-        android:textSize="35sp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:fontFamily="@font/thenamum"
-        android:id="@+id/shopText"
-        android:layout_marginTop="40dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/shopText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/recycler3"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:tabSelectedTextColor="#DF943D"
+        app:tabIndicatorColor="#DF943D">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Item1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tab1"
+
+            android:fontFamily="@font/robotobold"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tab2"
+            android:fontFamily="@font/robotobold"/>
 
 
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="86dp">
+
+    </androidx.viewpager.widget.ViewPager>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

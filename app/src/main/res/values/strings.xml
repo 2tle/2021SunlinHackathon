@@ -26,5 +26,7 @@
     <string name="tulip.">백합과의 여러해살이풀로 산자고속 식물의 총칭이다.\n꽃은 4-5월에 1개씩 위를 향하여 피고길이 7cm 정도 넓은\n종 모양이다. 울금향(鬱金香)이라고도 한다.</string>
     //튤립
     <string name="marimo">대마디말과에 속하는 담수성 녹조류의 일종.\n공모양으로 뭉쳐 자라며 테니스공 정도의 크기로\n자라는 데는 약 7년 남짓 걸린다고 한다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     //마리모
 </resources>
