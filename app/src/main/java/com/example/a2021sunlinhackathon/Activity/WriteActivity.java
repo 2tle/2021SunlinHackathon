@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.GpsTracker;
 import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.Model.Writemodel;
+
 import com.example.a2021sunlinhackathon.databinding.ActivityWriteBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -47,7 +48,7 @@ public class WriteActivity extends AppCompatActivity {
     private GpsTracker gpsTracker;
     long mNow;
     Date mDate;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    SimpleDateFormat mFormat = new SimpleDateFormat(" yyyy-MM-dd k:mm:ss");
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};

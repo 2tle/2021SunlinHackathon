@@ -15,18 +15,32 @@
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="150dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login">
+
+        </ImageView>
 
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="login"
+            android:fontFamily="@font/patrickhandscregular"
             android:layout_gravity="center"
-            android:textSize="26sp"
+            android:textSize="22sp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginLeft="10dp">
 
         </TextView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login">
+
+        </ImageView>
     </LinearLayout>
     <EditText
         android:id="@+id/idinput"

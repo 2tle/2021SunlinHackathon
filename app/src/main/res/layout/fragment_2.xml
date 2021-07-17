@@ -7,14 +7,28 @@
     tools:context=".Fragment.Fragment2">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_rectangle_30"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </Button>
+    </ImageButton>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_group_169"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/button">
+
+    </ImageView>
     <com.dinuscxj.progressbar.CircleProgressBar
         android:id="@+id/cpb_circlebar"
         android:layout_width="300dp"

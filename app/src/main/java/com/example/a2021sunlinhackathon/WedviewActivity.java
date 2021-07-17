@@ -2,25 +2,45 @@ package com.example.a2021sunlinhackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+
+import com.example.a2021sunlinhackathon.Activity.JoinActivity;
+import com.example.a2021sunlinhackathon.Activity.MainActivity;
+import com.example.a2021sunlinhackathon.Activity.Welcome;
 
 public class WedviewActivity extends AppCompatActivity {
     private WebView mWebView;
-    String uri;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wedview);
         mWebView = (WebView) findViewById(R.id.webview);
+        Button button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WedviewActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Intent secondIntent = getIntent();
+        String url = secondIntent.getStringExtra("url");
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl(uri);
+        mWebView.loadUrl(url);
         mWebView.setWebChromeClient(new WebChromeClient());
         mWebView.setWebViewClient(new WebViewClient());
 
