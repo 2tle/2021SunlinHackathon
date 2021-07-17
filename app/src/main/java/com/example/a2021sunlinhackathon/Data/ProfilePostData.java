@@ -7,6 +7,7 @@ public class ProfilePostData {
     public String l_addars;
     public String l_postid;
     public boolean l_isHeartPushed;
+    public int l_count;
 
     public String r_name;
     public String r_post;
@@ -14,6 +15,7 @@ public class ProfilePostData {
     public String r_addars;
     public String r_postid;
     public boolean r_isHeartPushed;
+    public int r_count;
 
     public ProfilePostData() {
 
@@ -25,6 +27,7 @@ public class ProfilePostData {
         this.l_addars = pfPDt.l_addars;
         this.l_uid = pfPDt.l_uid;
         this.l_name = pfPDt.l_name;
+        this.l_count = pfPDt.l_count;
 
         this.r_name = pfPDt.r_name;
         this.r_uid = pfPDt.r_uid;
@@ -32,6 +35,23 @@ public class ProfilePostData {
         this.r_post = pfPDt.r_post;
         this.r_isHeartPushed = pfPDt.r_isHeartPushed;
         this.r_addars = pfPDt.r_addars;
+        this.r_count = pfPDt.r_count;
+    }
+
+    public int getL_count() {
+        return l_count;
+    }
+
+    public void setL_count(int l_count) {
+        this.l_count = l_count;
+    }
+
+    public int getR_count() {
+        return r_count;
+    }
+
+    public void setR_count(int r_count) {
+        this.r_count = r_count;
     }
 
     public String getL_name() {

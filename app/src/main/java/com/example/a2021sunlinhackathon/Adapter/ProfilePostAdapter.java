@@ -82,6 +82,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 leftIntent.putExtra("addars",arrayList.get(position).getL_addars());
                 leftIntent.putExtra("postid",arrayList.get(position).getL_postid());
                 leftIntent.putExtra("isHeartPushed",arrayList.get(position).isL_isHeartPushed());
+                leftIntent.putExtra("count",arrayList.get(position).getL_count());
                 context.startActivity(leftIntent);
             }
         });
@@ -109,6 +110,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                     leftIntent.putExtra("addars",arrayList.get(position).getR_addars());
                     leftIntent.putExtra("postid",arrayList.get(position).getR_postid());
                     leftIntent.putExtra("isHeartPushed",arrayList.get(position).isR_isHeartPushed());
+                    leftIntent.putExtra("count",arrayList.get(position).getR_count());
                     context.startActivity(leftIntent);
                 }
             });

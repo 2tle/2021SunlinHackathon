@@ -162,15 +162,23 @@ public class Fragment4 extends Fragment {
                         if(userid.equals(s.child("uid").getValue().toString()) && tmp%2==0) {
                             tmp++;
                             boolean isHeart = false;
+                            for(int i = 0; i< s.child("heart").getChildrenCount(); i++) {
+                                if(s.child("heart").child(i+"").getValue().toString().equals(userid)) isHeart=true;
+                            }
+
                             pfPDt.setL_name(s.child("name").getValue().toString());
                             pfPDt.setL_addars(s.child("addars").getValue().toString());
                             pfPDt.setL_isHeartPushed(isHeart);
                             pfPDt.setL_post(s.child("post").getValue().toString());
                             pfPDt.setL_postid(s.child("postid").getValue().toString());
                             pfPDt.setL_uid(s.child("uid").getValue().toString());
+                            pfPDt.setL_count(Integer.parseInt(s.child("count").getValue().toString()));
                         }
                         else if(userid.equals(s.child("uid").getValue().toString()) && tmp%2 == 1) {
                             boolean isHeart = false;
+                            for(int i = 0; i< s.child("heart").getChildrenCount(); i++) {
+                                if(s.child("heart").child(i+"").getValue().toString().equals(userid)) isHeart=true;
+                            }
                             tmp++;
                             pfPDt.setR_name(s.child("name").getValue().toString());
                             pfPDt.setR_addars(s.child("addars").getValue().toString());
@@ -178,7 +186,7 @@ public class Fragment4 extends Fragment {
                             pfPDt.setR_post(s.child("post").getValue().toString());
                             pfPDt.setR_postid(s.child("postid").getValue().toString());
                             pfPDt.setR_uid(s.child("uid").getValue().toString());
-
+                            pfPDt.setR_count(Integer.parseInt(s.child("count").getValue().toString()));
                             nq = new ProfilePostData(pfPDt);
                             arrayList.add(nq);
                         }
@@ -194,6 +202,7 @@ public class Fragment4 extends Fragment {
                     pfPDt.setR_name(null);
                     pfPDt.setR_uid(null);
                     pfPDt.setR_postid("NODATA");
+                    pfPDt.setR_count(0);
                     nq = new ProfilePostData(pfPDt);
                     arrayList.add(nq);
 
