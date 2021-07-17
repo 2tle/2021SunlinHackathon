@@ -58,7 +58,9 @@
                 android:id="@+id/heartButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="15dp" />
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_heart"
+                android:backgroundTint="#00ff0000"/>
 
             <ImageButton
                 android:id="@+id/commentButton"

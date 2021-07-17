@@ -1,5 +1,7 @@
 package com.example.a2021sunlinhackathon.Data;
 
+import java.util.ArrayList;
+
 public class PostData {
     //public String profileImageUrl;
     public String name; //
@@ -9,6 +11,8 @@ public class PostData {
     public String addars; // 없음?
     public String postid;
     public boolean isHeartPushed;
+    public ArrayList<String> heart;
+    public int count;
 
     public PostData(String name, String post, String uid, String addars, String postid, boolean isHeartPushed) {
         this.name = name;
@@ -17,6 +21,22 @@ public class PostData {
         this.addars = addars;
         this.postid = postid;
         this.isHeartPushed = isHeartPushed;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public ArrayList<String> getHeart() {
+        return heart;
+    }
+
+    public void setHeart(ArrayList<String> heart) {
+        this.heart = heart;
     }
 
     public boolean isHeartPushed() {

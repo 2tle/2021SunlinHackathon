@@ -20,6 +20,7 @@ import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,7 +54,7 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
                 startActivity(intent);
             }
         });
-
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         recyclerView = (RecyclerView) fragment1.findViewById(R.id.recycler1);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
@@ -68,7 +69,16 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback{
                 for(DataSnapshot s : snapshot.getChildren()) {
                     try {
                         boolean isHeart = false;
+                        ArrayList<String> temp = new ArrayList<>();
+                        for(int i = 0; i < s.child("heart").getChildrenCount(); i++) {
+                            //s.child("heart").child(get)
+                            temp.add(s.child("heart").child(i+"").getValue().toString());
+                            if(s.child("heart").child(i + "").getValue().toString().equals(uid)) isHeart = true;
+                        }
+
                         PostData postData = new PostData(s.child("name").getValue().toString(),s.child("post").getValue().toString(),s.child("uid").getValue().toString(), s.child("addars").getValue().toString(), s.child("postid").getValue().toString(), isHeart);
+                        postData.setHeart(temp);
+                        postData.setCount(Integer.parseInt(s.child("count").getValue().toString()));
                         arrayList.add(postData);
                     } catch (Exception e) {
                         Log.e(">",e.getMessage());
