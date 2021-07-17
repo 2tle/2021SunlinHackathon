@@ -2,6 +2,7 @@ package com.example.a2021sunlinhackathon.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.a2021sunlinhackathon.R;
@@ -20,9 +21,10 @@ public class Database {
 
         }else{
             int ran=(int)(Math.random()*9)+1;
+
             SharedPreferences sharedPreferences= context.getSharedPreferences("User",context.MODE_PRIVATE);    // test 이름의 기본모드 설정
             SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
-            editor.putInt("plnat",ran);
+            editor.putInt("kind",ran);
             editor.commit();
 
 
@@ -226,8 +228,11 @@ public class Database {
 
 
     }
+    public void updata(){
 
+    }
     public void waterplat(Context context,int water,int plant) {
+        Log.d("asdf",plant+"|| "+water);
 
         String a = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();

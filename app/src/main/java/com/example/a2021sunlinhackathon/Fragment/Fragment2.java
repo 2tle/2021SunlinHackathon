@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,12 @@ import com.example.a2021sunlinhackathon.databinding.ActivityIllustratedbookBindi
 import com.example.a2021sunlinhackathon.databinding.Fragment2Binding;
 import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
 import com.example.a2021sunlinhackathon.illustratedbook;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +35,7 @@ import com.example.a2021sunlinhackathon.illustratedbook;
  * create an instance of this fragment.
  */
 public class Fragment2 extends Fragment {
-    Database database=new Database();
+    Database data=new Database();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -68,22 +75,68 @@ public class Fragment2 extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    FirebaseAuth firebaseAuth;
+    int water;
+    int plant;
+    int kind;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         Fragment2Binding binding = Fragment2Binding.inflate(inflater, container, false);
-        binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
-        binding.plant.setClipToOutline(true);
-        SharedPreferences sf = getContext().getSharedPreferences("Water", getContext().MODE_PRIVATE);
-        int plant = sf.getInt("plant", 0);
-        int water = sf.getInt("water", 0);
-        SharedPreferences s = getContext().getSharedPreferences("User", getContext().MODE_PRIVATE);
-        int adsf = sf.getInt("plant", 0);
+        //binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
+        //binding.plant.setClipToOutline(true);
+        String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference w = database.getReference("UserProfile").child(uid).child("water");
+        w.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                water= dataSnapshot.getValue(Integer.class);
 
-        String a=database.flow(plant);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+        DatabaseReference p = database.getReference("UserProfile").child(uid).child("plant");
+        p.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                plant= dataSnapshot.getValue(Integer.class);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+        DatabaseReference k = database.getReference("UserProfile").child(uid).child("kind");
+        k.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                kind= dataSnapshot.getValue(Integer.class);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+        String a=data.flow(plant);
         binding.ftlite.setText(a);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,8 +149,8 @@ public class Fragment2 extends Fragment {
         binding.imgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.waterplat(getContext(), water,plant);
-                database.lvup(water,adsf,binding.plant);
+                data.waterplat(getContext(), water,plant);
+                data.lvup(water,kind,binding.plant);
 
             }
         });

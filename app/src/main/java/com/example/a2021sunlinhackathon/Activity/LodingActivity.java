@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.a2021sunlinhackathon.Data.Database;
@@ -18,10 +19,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LodingActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Database database=new Database();
+    String id;
+    String name;
+    String frofile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +63,7 @@ public class LodingActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {//성공했을때
-
+                                logine();
                                 Intent intent = new Intent(LodingActivity.this, MainActivity.class);
 
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -95,4 +104,90 @@ public class LodingActivity extends AppCompatActivity {
         msgDlg.setCancelable(false);
         msgDlg.show();
     }
+    public void logine(){
+        String uid=firebaseAuth.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        Log.d("adsf",uid);
+        DatabaseReference getname = database.getReference("UserProfile").child(uid).child("name");
+        getname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                name= dataSnapshot.getValue(String.class);
+                Log.d("asdf","name="+name);
+                SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
+                SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+                editor.putString("name",name);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+        DatabaseReference getid = database.getReference("UserProfile").child(uid).child("id");
+        getid.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                id= dataSnapshot.getValue(String.class);
+                Log.d("asdf","id"+id);
+                SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
+                SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+                editor.putString("id",id);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+        DatabaseReference getfile = database.getReference("UserProfile").child(uid).child("profileImageUrl");
+        getfile.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                frofile= dataSnapshot.getValue(String.class);
+                Log.d("asdf",frofile);
+                SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
+                SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+                editor.putString("profile",frofile);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+        DatabaseReference plnat = database.getReference("UserProfile").child(uid).child("plant");
+        plnat.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int plnatt= dataSnapshot.getValue(Integer.class);
+
+                SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
+                SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+                editor.putInt("plnat",plnatt);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+
+    }
+
 }
