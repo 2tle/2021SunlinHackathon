@@ -12,16 +12,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Gallery;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.a2021sunlinhackathon.Database;
+import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.R;
-import com.example.a2021sunlinhackathon.Welcome;
+import com.example.a2021sunlinhackathon.Model.UserModel;
 import com.example.a2021sunlinhackathon.databinding.ActivityJoinBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,8 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
-
-import org.jetbrains.annotations.NotNull;
 
 public class JoinActivity extends AppCompatActivity {
     ActivityJoinBinding binding;

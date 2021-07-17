@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.a2021sunlinhackathon.Database;
+import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.R;
 import com.example.a2021sunlinhackathon.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;

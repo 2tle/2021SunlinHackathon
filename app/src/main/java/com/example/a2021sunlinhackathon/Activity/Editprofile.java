@@ -1,8 +1,10 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.a2021sunlinhackathon.R;
 
 public class Editprofile extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon.Activity;
+package com.example.a2021sunlinhackathon.Model;
 
 public class UserModel {
     public  String id;

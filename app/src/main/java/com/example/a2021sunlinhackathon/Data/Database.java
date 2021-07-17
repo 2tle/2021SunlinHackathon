@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

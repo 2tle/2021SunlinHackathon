@@ -18,13 +18,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.GpsTracker;
 import com.example.a2021sunlinhackathon.R;
-import com.example.a2021sunlinhackathon.Writemodel;
+import com.example.a2021sunlinhackathon.Model.Writemodel;
 import com.example.a2021sunlinhackathon.databinding.ActivityWriteBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;

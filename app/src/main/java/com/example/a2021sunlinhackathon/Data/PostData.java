@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Data;
 
 public class PostData {
     //public String profileImageUrl;

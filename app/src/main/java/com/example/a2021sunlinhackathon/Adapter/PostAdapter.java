@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Adapter;
 
 import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;
@@ -17,11 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Data.PostData;
+import com.example.a2021sunlinhackathon.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 

@@ -1,4 +1,4 @@
-package com.example.a2021sunlinhackathon;
+package com.example.a2021sunlinhackathon.Model;
 
 public class Writemodel {
     public String titlel;

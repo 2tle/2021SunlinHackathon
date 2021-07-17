@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -17,9 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.a2021sunlinhackathon.Activity.MainActivity;
-import com.example.a2021sunlinhackathon.Activity.WriteActivity;
-import com.example.a2021sunlinhackathon.Editprofile;
+import com.example.a2021sunlinhackathon.Activity.Editprofile;
 
 import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
 import com.google.android.gms.tasks.OnFailureListener;
