@@ -86,17 +86,10 @@ public class Fragment4 extends Fragment {
         String name = sharedPreferences.getString("name", "");
         String profile = sharedPreferences.getString("profile", "");
         String id = sharedPreferences.getString("id", "");
-
         binding.name.setText(name);
         binding.id.setText(id);
         Log.d("adsf", profile);
 
-        downlodimg();
-        return binding.getRoot();
-
-    }
-
-    public ConstraintLayout downlodimg() {
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
@@ -114,5 +107,8 @@ public class Fragment4 extends Fragment {
         });
 
         return binding.getRoot();
+
     }
+
+
 }

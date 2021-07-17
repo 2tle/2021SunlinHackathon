@@ -1,5 +1,7 @@
 package com.example.a2021sunlinhackathon.Fragment;
 
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a2021sunlinhackathon.R;
+import com.example.a2021sunlinhackathon.databinding.Fragment2Binding;
+import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +29,7 @@ public class Fragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private Fragment2Binding binding;
     public Fragment2() {
         // Required empty public constructor
     }
@@ -61,7 +65,12 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup fragment2 = (ViewGroup)inflater.inflate(R.layout.fragment_2,container,false);
-        return fragment2;
+
+        Fragment2Binding binding = Fragment2Binding.inflate(inflater, container, false);
+        binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
+        binding.plant.setClipToOutline(true);
+
+        
+        return binding.getRoot();
     }
 }
