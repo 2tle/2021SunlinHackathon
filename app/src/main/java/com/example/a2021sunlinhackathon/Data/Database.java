@@ -174,6 +174,39 @@ public class Database {
             }
 
         }else if(w>=25&&w<40){
+            switch (f){
+                case 1:
+                    imageView.setImageResource(R.drawable.flower3);
+                    break;
+                case 2:
+                    imageView.setImageResource(R.drawable.tree3);
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    imageView.setImageResource(R.drawable.flower3);
+                    break;
+                case 5:
+                    imageView.setImageResource(R.drawable.tree3);
+                    break;
+                case 6:
+                    imageView.setImageResource(R.drawable.tree3);
+                    break;
+                case 7:
+                    imageView.setImageResource(R.drawable.tree3);
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    imageView.setImageResource(R.drawable.flower3);
+                    break;
+                case 10:
+                    imageView.setImageResource(R.drawable.ma3);
+                    break;
+
+
+            }
 
 
 
