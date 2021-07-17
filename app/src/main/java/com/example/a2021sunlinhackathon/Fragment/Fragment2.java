@@ -89,7 +89,7 @@ public class Fragment2 extends Fragment {
 
         String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        data.lvup(water,kind,binding.plant);
+        data.lvup(plant,kind,binding.plant);
         binding.bbbb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class Fragment2 extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 water= dataSnapshot.getValue(Integer.class);
                 binding.waterCnt.setText(water+"");
-                data.lvup(water,kind,binding.plant);
+                data.lvup(plant,kind,binding.plant);
 
             }
 
@@ -120,7 +120,7 @@ public class Fragment2 extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 kind= dataSnapshot.getValue(Integer.class);
-                data.lvup(water,kind,binding.plant);
+                data.lvup(plant,kind,binding.plant);
 
 
             }
@@ -136,7 +136,7 @@ public class Fragment2 extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 plant= dataSnapshot.getValue(Integer.class);
-                data.lvup(water,kind,binding.plant);
+                data.lvup(plant,kind,binding.plant);
 
 
             }
