@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:tabSelectedTextColor="#DF943D"
-        app:tabIndicatorColor="#DF943D">
+        app:tabSelectedTextColor="#71C34A"
+        app:tabIndicatorColor="#71C34A">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_Item1"
@@ -40,10 +40,12 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_height="0dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="86dp">
+        tools:layout_editor_absoluteY="86dp"
+        app:layout_constraintTop_toBottomOf="@+id/tab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
     </androidx.viewpager.widget.ViewPager>
 

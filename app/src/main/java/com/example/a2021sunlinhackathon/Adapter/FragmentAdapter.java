@@ -22,8 +22,8 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         items.add(new ShopFragment());
         items.add(new DonateFragment());
 
-        itext.add("카폐인 섭취량");
-        itext.add("수면 시간");
+        itext.add("친환경 제품판매");
+        itext.add("지구를 위한 기부 ");
 
     }
 
