@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.Database;
 import com.example.a2021sunlinhackathon.R;
+import com.example.a2021sunlinhackathon.Welcome;
 import com.example.a2021sunlinhackathon.databinding.ActivityJoinBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -190,7 +191,7 @@ public class JoinActivity extends AppCompatActivity {
                                                 FirebaseDatabase.getInstance().getReference().child("UserProfile").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
+                                                        Intent intent = new Intent(JoinActivity.this, Welcome.class);
                                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                                         startActivity(intent);
                                                         finish();

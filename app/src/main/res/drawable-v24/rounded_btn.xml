@@ -39,7 +39,7 @@
             <gradient
                 android:startColor="#71C34A"
                 android:centerColor="#71C34A"
-                android:endColor="#FFFFFF"
+                android:endColor="#71C34A"
                 android:angle="270"
                 />
             <stroke

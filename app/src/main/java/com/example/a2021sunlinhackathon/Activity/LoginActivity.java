@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                 idchak=true;
                 if (pwechak&&idchak){
                     binding.loginbtn.setBackground(getDrawable(R.drawable.rounded_btncolor));
+
                 }
             }
 
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(pwechak==true&&idchak==true){
                     String email = binding.idinput.getText().toString().trim();
+
                     if(email.contains("@")==true){
                         int idx = email.indexOf("@");
                         String id = email.substring(0, idx);
