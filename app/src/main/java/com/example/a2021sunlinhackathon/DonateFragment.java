@@ -2,11 +2,29 @@ package com.example.a2021sunlinhackathon;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.a2021sunlinhackathon.Adapter.DonationAdapter;
+import com.example.a2021sunlinhackathon.Adapter.ShopAdapter;
+import com.example.a2021sunlinhackathon.Data.DonationData;
+import com.example.a2021sunlinhackathon.Data.ShopData;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +32,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class DonateFragment extends Fragment {
+    private ArrayList<DonationData> arrayList;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +83,48 @@ public class DonateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_donate, container, false);
+        ViewGroup shopFragment = (ViewGroup)inflater.inflate(R.layout.fragment_donate,container,false);
+        recyclerView = (RecyclerView)shopFragment.findViewById(R.id.donateRecycler);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference("DonationPosts");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                arrayList.clear();
+                for(DataSnapshot s : snapshot.getChildren()) {
+                    try {
+                        DonationData shopData = new DonationData();
+                        shopData.setLdPhotoUrl(s.child("Photo1").getValue().toString());
+                        shopData.setLdOutUrl(s.child("outUrl1").getValue().toString());
+                        shopData.setLdName(s.child("Id1").getValue().toString());
+                        shopData.setLdExp(s.child("Ex1").getValue().toString());
+                        shopData.setRdPhotoUrl(s.child("Photo2").getValue().toString());
+                        shopData.setRdOutUrl(s.child("outUrl2").getValue().toString());
+                        shopData.setRdName(s.child("Id2").getValue().toString());
+                        shopData.setRdExp(s.child("Ex2").getValue().toString());
+
+                        //ShopData shopData = new ShopData(s.child("Photo1").getValue().toString(), s.child("Id1").getValue().toString(), s.child("Photo2").getValue().toString(), s.child("Id2").getValue().toString());
+                        arrayList.add(shopData);
+                    } catch (Exception e) {
+                        Log.e(">",e.getMessage());
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.e(">fragment3>",String.valueOf(error.toException()));
+            }
+        });
+        adapter = new DonationAdapter(arrayList, getContext());
+        recyclerView.setAdapter(adapter);
+
+        return shopFragment;
+        //return inflater.inflate(R.layout.fragment_donate, container, false);
     }
 }
