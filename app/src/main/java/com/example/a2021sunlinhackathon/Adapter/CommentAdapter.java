@@ -73,6 +73,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             iv_profile = itemView.findViewById(R.id.commentProfile);
             tv_username = itemView.findViewById(R.id.commentUsername);
             tv_comment = itemView.findViewById(R.id.commentComment);
+            
         }
     }
 }

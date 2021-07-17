@@ -69,6 +69,13 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
+        recyclerView = (RecyclerView)binding.commentRecycler;
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Posts/"+postId+"/comment");
+
         String time=getTime();
         binding.sendComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +86,34 @@ public class CommentActivity extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("id").setValue(useruid);
                         FirebaseDatabase.getInstance().getReference().child("Posts").child(postId).child("comment").child(useruid+time).child("name").setValue(name);
                         binding.commentInput.setText("");
+                        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                arrayList.clear();
+                                for(DataSnapshot s : snapshot.getChildren()) {
+                                    try {
+                                        CommentData cd = new CommentData();
+                                        cd.setCommentUserProfile(s.child("id").getValue().toString());
+                                        cd.setCommentComment(s.child("comment").getValue().toString());
+                                        //cd.setCommentUsername("TEST");
+                                        cd.setCommentUsername(s.child("name").getValue().toString());
+                                        arrayList.add(cd);
+                                    } catch(Exception e) {
+                                        Log.e(">",e.getMessage());
+                                    }
+
+                                }
+                                adapter.notifyDataSetChanged();
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+
+
                     }
                 });
 
@@ -94,12 +129,7 @@ public class CommentActivity extends AppCompatActivity {
         });
 
 
-        recyclerView = (RecyclerView)binding.commentRecycler;
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
-        mDatabase = FirebaseDatabase.getInstance().getReference("Posts/"+postId+"/comment");
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -118,6 +148,7 @@ public class CommentActivity extends AppCompatActivity {
 
                 }
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -127,6 +158,7 @@ public class CommentActivity extends AppCompatActivity {
         });
         adapter = new CommentAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
+
 
     }
     private String getTime(){
