@@ -167,25 +167,6 @@ public class LodingActivity extends AppCompatActivity {
 
             }
         });
-        DatabaseReference plnat = database.getReference("UserProfile").child(uid).child("plant");
-        plnat.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int plnatt= dataSnapshot.getValue(Integer.class);
-
-                SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);    // test 이름의 기본모드 설정
-                SharedPreferences.Editor editor= sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
-                editor.putInt("plnat",plnatt);
-                editor.commit();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-
-            }
-        });
 
 
     }
