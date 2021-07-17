@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.a2021sunlinhackathon.Data.ShopData;
 import com.example.a2021sunlinhackathon.R;
-import com.example.a2021sunlinhackathon.WedviewActivity;
+import com.example.a2021sunlinhackathon.Activity.WedviewActivity;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 

@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="BestCmtUserName"
+                android:visibility="gone"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -106,6 +107,7 @@
                 android:id="@+id/bestComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="여기에는 베댓 예시입니다. 쓰는건 자유 ㅇㅇ"
                 android:textSize="13sp" />
         </LinearLayout>

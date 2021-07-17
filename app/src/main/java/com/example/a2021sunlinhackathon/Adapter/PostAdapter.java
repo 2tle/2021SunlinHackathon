@@ -108,10 +108,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Posts");
         if(arrayList.get(position).isHeartPushed()) {
-            holder.ib_heartBtn.setBackgroundColor(Color.RED);
+            holder.ib_heartBtn.setBackgroundColor(Color.parseColor("#F0010100"));
         }
         if(!arrayList.get(position).isHeartPushed()) {
-            holder.ib_heartBtn.setBackgroundColor(Color.GRAY);
+            holder.ib_heartBtn.setImageResource(R.drawable.ic_heart);
         }
         //int cntT = arrayList.get(position).getHeart().size()-1;
         holder.tv_heartCnt.setText("좋아요 "+arrayList.get(position).getCount()+"개");
@@ -130,7 +130,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     Toast.makeText(context,"이미 좋아요를 눌렀습니다.",Toast.LENGTH_LONG).show();
                 } else {
                     arrayList.get(position).isHeartPushed = true;
-                    //holder.ib_heartBtn.setImageTintList(ColorStateList.valueOf(Color.parseColor("#55ff0000")));
+                    holder.ib_heartBtn.setBackgroundColor(Color.parseColor("#F0010100"));
+                    //holder.ib_heartBtn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F0010100")));
+                    //holder.ib_heartBtn.setImageTintList();
                     arrayList.get(position).setCount(arrayList.get(position).getCount() + 1);
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart").child(arrayList.get(position).getCount()+"").setValue(useruid);
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("count").setValue(arrayList.get(position).getCount());
