@@ -2,6 +2,7 @@ package com.example.a2021sunlinhackathon.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -24,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Activity.CommentActivity;
 import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.R;
@@ -151,7 +153,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.ib_commentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent it = new Intent(context, CommentActivity.class);
+                //it.putExtra("id",arrayList.get(position).getPostid());
             }
         });
 
