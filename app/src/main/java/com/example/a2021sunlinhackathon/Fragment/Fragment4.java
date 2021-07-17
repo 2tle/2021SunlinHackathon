@@ -158,8 +158,8 @@ public class Fragment4 extends Fragment {
                 //Log.d(">>>>",snapshot.getChildren());
                 for(DataSnapshot s: snapshot.getChildren()) {
                     try {
-                        if(userid.equals(s.child("uid").getValue().toString()) &&tmp == 0) {
-                            tmp = 1;
+                        if(userid.equals(s.child("uid").getValue().toString()) && tmp%2==0) {
+                            tmp++;
                             boolean isHeart = false;
                             pfPDt.setL_name(s.child("name").getValue().toString());
                             pfPDt.setL_addars(s.child("name").getValue().toString());
@@ -167,9 +167,10 @@ public class Fragment4 extends Fragment {
                             pfPDt.setL_post(s.child("post").getValue().toString());
                             pfPDt.setL_postid(s.child("postid").getValue().toString());
                             pfPDt.setL_uid(s.child("uid").getValue().toString());
-                        } else if(userid.equals(s.child("uid").getValue().toString()) && tmp == 1) {
+                        }
+                        else if(userid.equals(s.child("uid").getValue().toString()) && tmp%2 == 1) {
                             boolean isHeart = false;
-                            tmp = 0;
+                            tmp++;
                             pfPDt.setR_name(s.child("name").getValue().toString());
                             pfPDt.setR_addars(s.child("name").getValue().toString());
                             pfPDt.setR_isHeartPushed(isHeart);
@@ -183,7 +184,8 @@ public class Fragment4 extends Fragment {
                         Log.e(">",e.getMessage());
                     }
                 }
-                if(tmp==1) {
+                if(tmp%2 == 1) {
+                    Log.d("cnt>","ASDf");
                     pfPDt.setR_post(null);
                     pfPDt.setR_addars(null);
                     pfPDt.setR_isHeartPushed(false);

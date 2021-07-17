@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +76,9 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 //Intent로 데이터 싹 넘기
             }
         });
+        Log.d(">>",arrayList.get(position).getR_postid());
         if(!arrayList.get(position).getR_postid().equals("NODATA")) {
+            //holder.iv_rightUserPost.setClickable(true);
             storageReference.child("postImages/"+arrayList.get(position).getR_postid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -94,7 +97,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 }
             });
         } else {
-            holder.iv_rightUserPost.setVisibility(View.INVISIBLE);
+            //holder.iv_rightUserPost.setClickable(false);
         }
 
 
