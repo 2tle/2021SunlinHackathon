@@ -70,19 +70,7 @@
         android:visibility="invisible"
         android:id="@+id/helpText"
         />
-    <com.dinuscxj.progressbar.CircleProgressBar
-        android:id="@+id/cpb_circlebar"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:progress_text_size="50sp"
-        app:style="solid_line"
-        app:progress_stroke_width="20dp "
-        app:progress_stroke_cap="round"
-        app:progress_end_color="#FFBB00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/plant"
         android:layout_width="250sp"
