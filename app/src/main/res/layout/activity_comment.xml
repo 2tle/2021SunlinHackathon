@@ -5,5 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.CommentActivity">
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="뒤로가기"
+        android:id="@+id/cmtBackButton"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/cmtBackButton"
+        android:id="@+id/commentLinear">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/writerProfile" />
+
+        <EditText
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/commentInput"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:text="작성"
+            android:id="@+id/sendComment"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/commentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/commentRecycler" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
