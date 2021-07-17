@@ -52,9 +52,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
     public void onBindViewHolder(@NonNull ProfilePostViewHolder holder, int position) {
 
         //userProfile => 지금 로그인 된 유저프로필, bestComment => 댓글 있으면 그중에서 좋은 댓글 하나 보여주기
-        /*
-        Glide.with(holder.itemView).load(arrayList.get(position).getProfileImageUrl()).into(holder.iv_profile);
-        Glide.with(holder.itemView).load(arrayList.get(position).getUserUploadImageUrl()).into(holder.iv_userUpload); */
+
         String useruid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
@@ -76,7 +74,6 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 //Intent로 데이터 싹 넘기
             }
         });
-        Log.d(">>",arrayList.get(position).getR_postid());
         if(!arrayList.get(position).getR_postid().equals("NODATA")) {
             //holder.iv_rightUserPost.setClickable(true);
             storageReference.child("postImages/"+arrayList.get(position).getR_postid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -97,7 +94,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 }
             });
         } else {
-            //holder.iv_rightUserPost.setClickable(false);
+            holder.iv_rightUserPost.setVisibility(View.INVISIBLE);
         }
 
 

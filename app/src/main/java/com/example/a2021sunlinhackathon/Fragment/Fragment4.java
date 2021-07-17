@@ -153,6 +153,7 @@ public class Fragment4 extends Fragment {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 arrayList.clear();
                 ProfilePostData pfPDt = new ProfilePostData();
+                ProfilePostData nq;
                 int tmp = 0;
                 String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //Log.d(">>>>",snapshot.getChildren());
@@ -177,7 +178,9 @@ public class Fragment4 extends Fragment {
                             pfPDt.setR_post(s.child("post").getValue().toString());
                             pfPDt.setR_postid(s.child("postid").getValue().toString());
                             pfPDt.setR_uid(s.child("uid").getValue().toString());
-                            arrayList.add(pfPDt);
+
+                            nq = new ProfilePostData(pfPDt);
+                            arrayList.add(nq);
                         }
 
                     } catch (Exception e) {
@@ -185,14 +188,15 @@ public class Fragment4 extends Fragment {
                     }
                 }
                 if(tmp%2 == 1) {
-                    Log.d("cnt>","ASDf");
                     pfPDt.setR_post(null);
                     pfPDt.setR_addars(null);
                     pfPDt.setR_isHeartPushed(false);
                     pfPDt.setR_name(null);
                     pfPDt.setR_uid(null);
                     pfPDt.setR_postid("NODATA");
-                    arrayList.add(pfPDt);
+                    nq = new ProfilePostData(pfPDt);
+                    arrayList.add(nq);
+
                 }
                 adapter.notifyDataSetChanged();
 

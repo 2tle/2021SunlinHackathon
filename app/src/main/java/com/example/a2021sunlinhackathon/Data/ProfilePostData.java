@@ -15,12 +15,47 @@ public class ProfilePostData {
     public String r_postid;
     public boolean r_isHeartPushed;
 
+    public ProfilePostData() {
+
+    }
+    public ProfilePostData(ProfilePostData pfPDt) {
+        this.l_post = pfPDt.l_post;
+        this.l_isHeartPushed = pfPDt.l_isHeartPushed;
+        this.l_postid = pfPDt.l_postid;
+        this.l_addars = pfPDt.l_addars;
+        this.l_uid = pfPDt.l_uid;
+        this.l_name = pfPDt.l_name;
+
+        this.r_name = pfPDt.r_name;
+        this.r_uid = pfPDt.r_uid;
+        this.r_postid = pfPDt.r_postid;
+        this.r_post = pfPDt.r_post;
+        this.r_isHeartPushed = pfPDt.r_isHeartPushed;
+        this.r_addars = pfPDt.r_addars;
+    }
+
     public String getL_name() {
         return l_name;
     }
 
     public void setL_name(String l_name) {
         this.l_name = l_name;
+    }
+
+    public void clear() {
+        this.l_name=null;
+        this.l_post=null;
+        this.l_uid=null;
+        this.l_addars=null;
+        this.l_postid=null;
+        this.l_isHeartPushed=false;
+
+        this.r_addars=null;
+        this.r_isHeartPushed=false;
+        this.r_post=null;
+        this.r_postid="NODATA";
+        this.r_uid = null;
+        this.r_name = null;
     }
 
     public String getL_post() {
