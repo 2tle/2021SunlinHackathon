@@ -13,14 +13,29 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/postProfileImage" />
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="여기에 유저의 닉네임"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/userNameTextView"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="여기에 유저의 닉네임"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/userNameTextView"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대한민국 서울시"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/location"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
@@ -49,7 +64,8 @@
         android:layout_height="wrap_content"
         android:text="여기엔 사용자가 올렸던 텍스트가 있을겁네다."
         android:textSize="13sp"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:id="@+id/postText"/>
 
     <LinearLayout
         android:layout_width="match_parent"
