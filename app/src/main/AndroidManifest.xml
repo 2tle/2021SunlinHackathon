@@ -15,9 +15,7 @@
         android:theme="@style/Theme.2021SunlinHackathon">
         <activity android:name=".Activity.WriteActivity"></activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBJ8SaPGsUYa_HSfIGmRh1IFU-Wuhgo4K0" />
+
 
         <activity android:name=".Activity.UserFrofile">
             <intent-filter>
