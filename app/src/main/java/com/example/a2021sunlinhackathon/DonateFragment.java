@@ -101,9 +101,11 @@ public class DonateFragment extends Fragment {
                         shopData.setLdPhotoUrl(s.child("Photo1").getValue().toString());
                         shopData.setLdOutUrl(s.child("outUrl1").getValue().toString());
                         shopData.setLdName(s.child("Id1").getValue().toString());
+                        shopData.setLdExp(s.child("Ex1").getValue().toString());
                         shopData.setRdPhotoUrl(s.child("Photo2").getValue().toString());
                         shopData.setRdOutUrl(s.child("outUrl2").getValue().toString());
                         shopData.setRdName(s.child("Id2").getValue().toString());
+                        shopData.setRdExp(s.child("Ex2").getValue().toString());
 
                         //ShopData shopData = new ShopData(s.child("Photo1").getValue().toString(), s.child("Id1").getValue().toString(), s.child("Photo2").getValue().toString(), s.child("Id2").getValue().toString());
                         arrayList.add(shopData);
