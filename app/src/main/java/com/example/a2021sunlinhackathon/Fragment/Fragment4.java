@@ -163,7 +163,7 @@ public class Fragment4 extends Fragment {
                             tmp++;
                             boolean isHeart = false;
                             pfPDt.setL_name(s.child("name").getValue().toString());
-                            pfPDt.setL_addars(s.child("name").getValue().toString());
+                            pfPDt.setL_addars(s.child("addars").getValue().toString());
                             pfPDt.setL_isHeartPushed(isHeart);
                             pfPDt.setL_post(s.child("post").getValue().toString());
                             pfPDt.setL_postid(s.child("postid").getValue().toString());
@@ -173,7 +173,7 @@ public class Fragment4 extends Fragment {
                             boolean isHeart = false;
                             tmp++;
                             pfPDt.setR_name(s.child("name").getValue().toString());
-                            pfPDt.setR_addars(s.child("name").getValue().toString());
+                            pfPDt.setR_addars(s.child("addars").getValue().toString());
                             pfPDt.setR_isHeartPushed(isHeart);
                             pfPDt.setR_post(s.child("post").getValue().toString());
                             pfPDt.setR_postid(s.child("postid").getValue().toString());
