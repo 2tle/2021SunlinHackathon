@@ -2,6 +2,7 @@ package com.example.a2021sunlinhackathon.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.a2021sunlinhackathon.Data.Database;
 import com.example.a2021sunlinhackathon.Data.PostData;
 import com.example.a2021sunlinhackathon.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +39,8 @@ import com.google.firebase.storage.StorageReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     //public
@@ -129,6 +133,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart").child(arrayList.get(position).getCount()+"").setValue(useruid);
                     mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("count").setValue(arrayList.get(position).getCount());
                     holder.tv_heartCnt.setText("좋아요 "+arrayList.get(position).getCount()+"개");
+                    SharedPreferences sf = context.getSharedPreferences("Water", MODE_PRIVATE);
+                    int plant = sf.getInt("plant", 0);
+                    int water = sf.getInt("water", 0);
+                    Database database = new Database();
+                    database.water(context, water,2);
                     //mDatabase.child("Posts").child(arrayList.get(position).getPostid()).child("heart")
                 }
             }
