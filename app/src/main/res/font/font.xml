@@ -11,4 +11,8 @@
         android:font="@font/robotomedium"
 
         />
+    <font
+        android:font="@font/patrickhandscregular">
+
+    </font>
 </font-family>

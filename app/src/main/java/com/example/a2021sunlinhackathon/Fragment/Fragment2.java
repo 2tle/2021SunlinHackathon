@@ -1,5 +1,6 @@
 package com.example.a2021sunlinhackathon.Fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -10,9 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a2021sunlinhackathon.Activity.LodingActivity;
+import com.example.a2021sunlinhackathon.Activity.MainActivity;
 import com.example.a2021sunlinhackathon.R;
+import com.example.a2021sunlinhackathon.databinding.ActivityIllustratedbookBinding;
 import com.example.a2021sunlinhackathon.databinding.Fragment2Binding;
 import com.example.a2021sunlinhackathon.databinding.Fragment4Binding;
+import com.example.a2021sunlinhackathon.illustratedbook;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +75,16 @@ public class Fragment2 extends Fragment {
         binding.plant.setBackground(new ShapeDrawable(new OvalShape()));
         binding.plant.setClipToOutline(true);
 
-        
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), illustratedbook.class);
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
         return binding.getRoot();
     }
 }

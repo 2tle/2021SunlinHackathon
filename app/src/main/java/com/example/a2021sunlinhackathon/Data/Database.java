@@ -23,10 +23,8 @@ public class Database {
             editor.putInt("day",day);
             editor.commit();
             String a=FirebaseAuth.getInstance().getCurrentUser().getUid();
-
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("UserProfile"+a).child("water");
-
+            DatabaseReference myRef = database.getReference("UserProfile/"+a).child("water");
             myRef.setValue(0);
 
 
@@ -51,6 +49,28 @@ public class Database {
         editor.putString("fropil",fropil);
         editor.commit();
     }
+    public void water(int getwater,int num){
+        if(getwater<10){
+            switch (num){
+                case  1:
+                    getwater=getwater+3;
+                    break;
+                case 2 :
+                    getwater=getwater+1;
+                    break;
+                case 3:
+                    getwater=getwater+1;
+                    break;
 
+
+            }
+            String a=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("UserProfile/"+a).child("water");
+            myRef.setValue(getwater);
+        }
+
+    }
 
 }
